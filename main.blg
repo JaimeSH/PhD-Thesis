@@ -1,0 +1,75 @@
+This is BibTeX, Version 0.99d (TeX Live 2018/W32TeX)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: main.aux
+A level-1 auxiliary file: cover.aux
+A level-1 auxiliary file: contents.aux
+A level-1 auxiliary file: chap1.aux
+A level-1 auxiliary file: chap2.aux
+A level-1 auxiliary file: chap3.aux
+A level-1 auxiliary file: chap4.aux
+A level-1 auxiliary file: chap5.aux
+A level-1 auxiliary file: biblio.aux
+The style file: ieeetr.bst
+A level-1 auxiliary file: appa.aux
+Database file #1: main.bib
+Warning--I didn't find a database entry for "Huang2009"
+Warning--I didn't find a database entry for "Lu2009"
+Warning--I didn't find a database entry for "Avramov2006"
+Warning--I didn't find a database entry for "Garcia-Almanza2006"
+Warning--I didn't find a database entry for "Cai2013"
+Warning--I didn't find a database entry for "Shoham1993"
+Warning--I didn't find a database entry for "Hernandez-Aguila2017"
+Warning--I didn't find a database entry for "Atanassov1986"
+Warning--I didn't find a database entry for "Hancock2012"
+Warning--I didn't find a database entry for "JinghuiZhong2006"
+Warning--I didn't find a database entry for "sivanandam2007introduction"
+Warning--empty institution in Mateas
+Warning--empty year in Mateas
+Warning--empty institution in Holtar
+Warning--empty year in Holtar
+Warning--empty institution in Risi2012
+Warning--empty institution in Harik1999
+Warning--empty booktitle in Calle2019
+Warning--empty institution in Smith2009
+You've used 20 entries,
+            1876 wiz_defined-function locations,
+            628 strings with 7479 characters,
+and the built_in function-call counts, 4459 in all, are:
+= -- 401
+> -- 223
+< -- 1
++ -- 83
+- -- 63
+* -- 337
+:= -- 682
+add.period$ -- 22
+call.type$ -- 20
+change.case$ -- 22
+chr.to.int$ -- 0
+cite$ -- 28
+duplicate$ -- 214
+empty$ -- 422
+format.name$ -- 63
+if$ -- 1040
+int.to.chr$ -- 0
+int.to.str$ -- 20
+missing$ -- 15
+newline$ -- 65
+num.names$ -- 20
+pop$ -- 80
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 118
+stack$ -- 0
+substring$ -- 208
+swap$ -- 65
+text.length$ -- 1
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 8
+while$ -- 41
+width$ -- 22
+write$ -- 174
+(There were 19 warnings)

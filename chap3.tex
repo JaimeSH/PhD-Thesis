@@ -1,216 +1,158 @@
-\chapter{Related Work}
+\chapter{Estado del arte}
 \label{chapter:related-work}
 
-This Chapter focuses on showcasing a series of works that should help the reader
-understand what is the state of the different parts that compose the proposed
-method presented in Chapter \ref{chapter:proposed-method}.
+Este capitulo se enfoca en mostrar los diferentes trabajaos que permitiran
+comprender mejor la problematica que se quiere resolver asi como los diferentes
+enfoques que se le han dado para poder resolverlo.
 
-\section{Financial Forecasting}
-\label{section:financial-forecasting}
+\section{Competencia IEEE CoG}
+\label{section:ieeecog}
 
-Determining if a financial market should be traded is a process that can be
-approached in different ways. For example, a straightforward method is to
-analyze the financial health of a company to infer if it would be a good idea to
-buy stock from it. This approach is known as fundamental analysis
-\cite{Martinez-Jaramillo2009} and it is often contrasted to technical analysis,
-which focuses on the analysis of historical prices of a financial market to
-arrive at such inferences. Technical analysis involves any process that uses as
-input the market prices and the output can usually be plotted along with the
-market prices \cite{Achelis2000}. These processes are known as technical
-indicators, which often focus on providing the chartist with information about a
-market that would be difficult to infer by only looking at the raw price data.
+Como se demuestra en el articulo presentado por J. Renz et al.\cite{Renz2016} la
+competencia de Angry Birds utilizando inteligencia artificial se realiza de
+manera anual desde el año 2012 iniciando en la conferencia dentro del marco de
+la AAAI (Association for the Advancement of Artificial Intelligence), en este
+articulo se explica la primera linea de competencia que consta de desarrollar
+agentes que sean capaces de solucionar niveles del juego de tal manera que se
+asemeje a la manera en como jugaria una persona real, se explica el estado del
+arte el cual consta de previos competidores y de como han logrado realizar sus
+agentes para el juego, de igual manera se explica la nueva linea de competencia
+que consta de utilizar el mismo conjunto de niveles y permitir que los agentes
+compitan para ver cual logra resolver mas rapido el conjunto de niveles.
 
-Although some studies have suggested that technical analysis works because it is a
-``self-fulfilling prophecy'' \cite{Salganik2008} \cite{Fund1992}, other studies
-also suggest that its usefulness in market forecasting is important
-\cite{Kadiri2015} \cite{Fund1992}.
+Posteriormente en un articulo elaborado por M. Stephenson et
+al.\cite{Stephenson2018The2A} se explica detalladamente como es que el juego se
+conecta en una arquitectura cliente-servidor y como es que se adapta la
+arquitectura para que los agentes utilizados puedan obtener datos del juego para
+poder realizar los calculos pertinentes, en este mismo articulo se presenta
+informacion de la segunda linea de competencia llamada competencia de generacion
+de niveles de AIBIRDS la cual se comenzo a realizar desde el año 2016, en esta
+version de la competencia los generadores deben de cumplir con el proposito de
+crear noveles que sean creativos, divertidos, estables en cuanto a la gravedad
+del juego y posibles de ser solucionados, ademas de esto se debe de tener en
+consideracion realizar niveles que sean desafiantes a los jugadores, como el
+juego no es open source los niveles se generan en una version clon del juego que
+cuenta con las mismas mecanicas.
 
-This thesis suggests that a financial market's data should be preprocessed
-before being used as input for a modelling algorithm. The preprocessing
-algorithm showcased in the proposed method is very similar in nature to what a
-technical indicator is. Furthermore, the preprocessing algorithm is based on the
-idea of an existing technical indicator known as Fibonacci retracements. It can
-also be noted that the preprocessing algorithm presented in this thesis shares
-some similarity to fuzzy time series \cite{Cai2013}, as the price areas that it
-outputs can be seen as price levels associated with a level of uncertainty.
+Un segundo articulo escrito por M. Stephenson et al.\cite{Stephenson2018} se
+presenta una version mas actualizada de las reglas de la competencia, en este
+articulo se establece el uso de un archivo proporcionado por los organizadores,
+este archivo cuenta con 4 lines en las cuales se establece las condiciones que
+los niveles generados deberan de cumplir, la informacion proporciona en el
+archivo es la cantidad de niveles que se deberan de generar, las piezas no
+permitidas en un nivel asi como las combinaciones que se deberan de evitar, la
+cantidad de puercos a colocar en un nivel y por ultimo el tiempo limite para
+terminar los niveles, en el caso de los tipos de materiales prohibidos se
+entrega una lista que especifica que piezas con que material no se puede
+colocar, en el caso de los puercos se entrega un rango numerico en el cual se
+especifica la cantidad minima y maxima a colocar, en cuanto a los valores de
+niveles y tiempo limite se entragan como valores numericos enteros, sin embargo
+los valores que se entregan generalmente son 5 para la cantidad de niveles y 30
+en la cantidad de minutos que puede durar el generador.
 
-Technical indicators can be used to forecast a market's prices, such as in the
-case of candlestick patterns \cite{Nison1991} or linear regression
-\cite{kutner2004applied} which, although it is used in other contexts involving
-time series, could be considered a technical indicator if used to forecast a
-financial market. One can add an extra layer in the forecasting process and use
-the outputs from the technical indicators as inputs to another algorithm. For
-example, Ijegwa et al. \cite{Ijegwa2014} uses four technical indicators as the
-inputs for a fuzzy system that estimates the probability of a market's price
-going up or down. This approach is similar to the one proposed in this thesis,
-as the preprocessing algorithm is based on a technical indicator and it is used
-as input for fuzzy systems that function as the rule systems for the agents in a
-multi-agent system.
+\section{Algoritmos de busqueda}
+\label{section:search-based}
 
-Arguably one of the most common methods used to forecast financial markets is
-neural networks. For example, Castillo and Melin \cite{Castillo2001}
-\cite{melin2007hybrid} use neural networks to forecast the prices of tomato and
-green onion markets in the United States. One can also combine the idea of
-preprocessing a market's prices using technical indicators and then use these
-outputs as the inputs for a neural network, as in the work by O'Connor
-\cite{Connor2005}. Neural networks were the first candidate for modelling the
-agents' rules in the proposed method, as it is a common technique as described
-in \cite{Grothmann2002}, but the use of fuzzy systems for this purpose seemed as
-a better approach by the author of this thesis, as fuzzy systems are more
-interpretable than the models generated by neural networks. As an example of a
-similar approach to the aforementioned one, Gamil et al. \cite{Gamil2007} create
-a multi-agent system that is tuned using a fuzzy system in order to create a
-simulation of the NASDAQ index.
+L. Ferreira et al.\cite{Ferreira2014} presentaron un sistema de generación de
+niveles mediante el uso de algoritmos genéticos, en el sistema se propone la
+definición de un individuo como una listas de elementos que se acomodaran en
+forma de torre, el sistema propuesto utiliza las piezas base del juego y se
+agregaron 4 elementos compuestos, los niveles se definen como un área de trabajo
+con tres posiciones donde las torres podrán ser generadas a base de las piezas
+en la lista principal, las piezas irregulares tales como los dos diferentes
+tipos de triángulos son tomados en cuenta únicamente en la última posición de
+las torres.
 
-\section{Interpretation of Financial Markets}
-\label{section:interpretation-of-financial-markets}
+Una herramienta de generacion de niveles basado en el uso de patrones de
+generacion es propuesto por Y. Jiang et al.\cite{Jiang2017}, en este paper los
+autores propoen el uso de patrones predefinidos de generacion de estructuras
+basadas en el alfabeto americano, valores numericos, simbolos asi como el
+ordenamiento de estos en base a patrones de frases o palabras predefinidas que
+pueden ser utilizadas, utilizando estos patrones se generan niveles en donde se
+muestran frases divertidas o motivacionales que serian jugados por personas para
+evaluarlos, debido a la manera de acomodo de bloques utilizada en este paper el
+problema de que los niveles sean estables se eliminaba y simplemente se utiliza
+el sistema para cumplir los dos objetivos restantes los cuales son que los
+niveles sean jugables y entretenidos, mientras que la manera final de evaluar la
+funcionalidad del generador se basaba la rejugabilidad, la legibilidad del texto
+asi como de la dificultad de los niveles, para esto los autores se apoyaron de
+10 personas con cirto grado de comprension del idioma ingles, de esta manera en
+caso de que los textos fueran dificiles de comprender, la dificultad fuera
+demasiado alta o generara un interes por repetir el nivel los participantes
+serian los encargados de proporcionar estos resultados.
 
-Technical indicators can be used to interpret the price data of financial
-markets. For example, Wilder's Parabolic SAR can be used to determine if a
-market has shifted its trend \cite{Wilder1978}. In the case of the proposed
-method's preprocessing algorithm, its plots can be used to determine possible
-price stagnation or bouncing areas. These interpretations are usually used to
-decide if a market is a good candidate for trading. Forecasting algorithms can
-be extended to the use of market interpretability: if a market can be easily
-predicted, then it can be interpreted as a profitable market. As an example of
-this approach, one can see the work by Brown et al. \cite{Brown2013}, where they
-use a variation of a genetic algorithm to generate a set of rules that forecast
-the prices of multiple stocks from the Dow Jones Index, and decide which stocks
-to buy based on the performance obtained by the sets of rules.
+Para la adaptabilidad de los niveles basados en los resultados de la funcion de
+aptitud M. Kaidan et al.\cite{Kaidan2015} proponen una medicion basada en la
+habilidad de un jugador en un nivel, la evaluacion de la habilidad esta dada por
+el puntaja obtenido durante el juego, en el juego de angry birds el puntaje de
+un jugador esta ligado a la cantidad de destruccion de estructuras lograda y la
+cantidad de aves que no se utilizaron para completar el nivel, en este caso el
+paper se apoyaba de la funcion de aptitud de L. Ferreira et
+al.\cite{Ferreira2014} para la distribucion de los puercos en un nivel y se
+adaptaba la funcion para modificar la cantidad de puercos colocados deacuerdo a
+la facilidad con la que se lograba resolver el nivel, de esta manera el sistema
+generaba un conjunto de niveles para que una persona los solucionara y basandose
+en los resultados de los niveles se generaba el siguiente conjunto para
+resolver, de tal manera que el sistema requeria que una persona evaluara los
+niveles cada generacion para que el sistema generara niveles mas desafiantes
+para esa persona.
 
-The work by Brown et al. can be considered as a decision support
-system. Decision support systems provide refined information about a situation
-in order to help its users take a decision \cite{Keen1980}. The proposed method
-can be used in this way by examining the decisions and rules that the agents
-needed to follow in order to provide a simulation of a financial market. As a
-notable example of a decision support system for market trading the reader can
-examine the works by Tsang and Li \cite{Tsang2004} \cite{tsang1998eddie} where
-they describe EDDIE, a tool based on a genetic programming algorithm and
-decision trees used for market evaluation.
+Otro generador propone el uso de un selector de dificultad como parametro de
+entrada de un algoritmo genetico para la generacion de niveles con elementos
+predefinidos, en este paper M. Kaidan et al.\cite{Kaidan2016} utilizan una
+version extendida del Algebra de Intevalo Temporal de Allen (Allen's Temporal
+Interval Algebra)\cite{ALLEN1990} para calcular area minima delimitadora
+(Minimum Bounding Rectangle) de cada elemento del juego para realizar calculos
+de posicion mas exactos al momento de obtener resultados, utilizando estas
+mecanicas proponen evaluar la relacion de movimiento despues de que una ave a
+impactado en alguna de las piezas del nivel.
 
-In addition to how one can use candlestick charts to interpret a market's
-behavior \cite{Nison1991}, the volume of units traded can also be used to
-provide interpretations. Blume et al. \cite{Blume1994} show in their work how
-volume and price movements relate, and how this information can benefit the
-agents' learning process in a multi-agent system.
+Otros investigadores proponen utilizar sistemas de generacion que no incluyan
+limitantes en las estructuras a fin de permitir una evolucion general mas
+"libre" tal es el caso del paper desarrollado por L. Calle et al.
+\cite{Calle2019} en donde utilizan un sistema de generacion que ignora la
+necesidad de crear estructuras siguiendo patrones o simetria, en este paper se
+busca utilizar un espacio de busqueda relativamente pequeño para ahorrar tiempo
+de procesamiento, ademas de esto utilizan una aplicacion de codigo libre llamada
+Box2D (https://box2d.org) sobre la cual esta basado el codigo del juego de Angry
+Birds y permite realizar simulaciones de manera mas rapida debido a que solo se
+calcula la estabilidad de las estructuras para el valor de fitness de los
+individuos, sin embargo debido que el sistema de generacion no esta encaminado
+por patrones las estructuras finales generadas carecen de llamatividad visual,
+cabe mencionar que este trabajo se utilizo como base para el desarrollo del
+proyecto actual, algunas de las ideas tuvieron origen en este trabajo para ser
+modificadas y adaptadas en nuestra propuesta.
 
-There are also works that have focused on automatically finding patterns that
-emerge in the market, such as in the works by Lo et al. \cite{Lo2000} and Neely
-et al. \cite{Neely1997} where they try to find patterns in technical indicators
-by using kernel regression and genetic programming, respectively.
+\section{Agentes para jugar}
+\label{section:others}
 
-\section{Multi-agent Systems}
-\label{section:multi-agent-systems}
+De igual manera varios autores toman la ruta de programacion de agentes que sean
+capaces de solucionar los niveles presentados en el juego, de estos se hacen
+mencion algunos.
 
-Some works related to multi-agent systems have already been mentioned in the
-previous Sections of this Chapter, but as the proposed method is based
-specifically on this technique, it is worth mentioning some additional
-works. Multi-agent systems have commonly been used in the past decades to
-describe financial markets, due to their capabilites to model very complex
-systems. The reader can consult the works by Lebaron \cite{Lebaron2001} and
-Samanidou \cite{Bundesbank2007} to learn more about how to apply this technique
-to financial market modelling.
+Dentro de la competencia de diseño de agentes el objetivo es que el agente sea
+capaz de solucionar los niveles utilizando las mecanicas de gravedad y colision
+del juego, por tal manera F. Calimeri et al. \cite{Calimeri2016} propones el uso
+de una forma de programacion declarativa llamada Answer Set Programming (ASP por
+sus siglas en ingles) dicha mecanica esta orientada hacia algoritmos de busqueda
+dificiles, en este caso utilizan ASP para analizar el campo de juego que
+involucra los bloques utilizados en las estructuras y los puercos estacionados
+en ellas, de esta manera ASP tratara de identificar el daño que puede ser
+causado asi como el movimiento resultante de los bloques en base a la gravedad
+del juego al momento de disparar una ave en un cierto angulo con determinada
+fuerza, en base a esto se determina el siguiente tiro a realizar para poder
+completar el nivel. 
 
-The proposed method started by following the recommendations in Shoham's work
-\cite{Shoham1993} \cite{Shoham2009}, where agents are described as entities that
-have a set of beliefs that determine how they perceive their environment. These
-perceptions are then used as inputs to a rule system that dictate the actions
-to be performed on their environment. Other works that implement this
-methodology are the works by Samanidoe et al. \cite{Bundesbank2007} and Sherstov
-and Stone\cite{Sherstov2005}, where they implement known economic models as the
-agents' rules and see how they can model specific phenomena, such as economic
-bubbles.
+Diferentes autores han utilizado diferentes técnicas para la generación de
+contenido, algunas utilizando computación evolutiva y algunas otras simplemente
+a base de algoritmos de búsqueda, de estos mismos los mas relevantes se les hace
+mención: G. Smith et al.\cite{Smith2009} proponen un software de generación de
+niveles estilo juego de plataformas mediante el uso de un software aplicando
+inteligencia artificial, en este software se le permite a un usuario seleccionar
+la altura de el punto de inicio y punto final de un nivel en particular y el
+sistema trata de llenar el espacio restante con plataformas que permitan que el
+nivel se pueda completar, el sistema se basa en una medición de pulsos en los
+cuales una persona podría realizar una acción determinada para avanzar a la
+siguiente sección.
 
-A work concerned with the use of multi-agent systems for the simulation of stock
-markets is that proposed by Kendal et al. \cite{Kendall2003}, which describes a
-method similar to the one proposed in this thesis regarding how multiple agents
-are used to simulate different trader profiles in order to create a simulation
-of the real market prices. Another similar approach to the proposed method is
-the work by Chen \cite{Chen2001}, where populations of agents are evolved using
-genetic programming to simulate the traders' behavior in a market, and then
-connect these behaviors to psychological factors such as peer pressure.
 
-\section{Evolutionary Algorithms}
-\label{section:evolutionary-algorithms}
-
-Different evolutionary algorithms were considered for the optimization stage of
-the proposed method. Eberhart and Kennedy \cite{Eberhart2002} and Price and
-Storn \cite{Price1997} describe the two principal alternatives that were
-considered: particle swarm optimization and differential evolution. These
-algorithms were considered because of their capabilities to find optimal
-solutions in a continuous search space, while a genetic algorithm -- the
-solution that was selected in the end -- can only handle discrete search
-spaces. The reader can refer to the work by Back and Shwefel \cite{Back2008} and
-Whitley \cite{Whitley1994} for a comparison among some interesting alternatives
-that can be used in the proposed method instead of genetic algorithms. In
-particular, a next step for the proposed method could be to upgrade its current
-genetic algorithm to a variation of it, such as the compact genetic algorithm
-proposed by Harik \cite{Harik1999}, which uses less computational resources than
-a traditional genetic algorithm and is more efficient in its evaluations.
-
-The optimization of Fuzzy systems using evolutionary algorithms can be regarded as
-common practice. Some notable examples of this are the works by Thrift
-\cite{Thrift1991} and Homaifar and McCormick \cite{Homaifar1995}, which use
-genetic algorithms to find optimal combinations of parameters for the membership
-functions in fuzzy systems.
-
-\section{Fuzzy Systems}
-\label{section:fuzzy-systems}
-
-The fuzzy systems used to represent the agents' rules in the proposed method are
-based, firstly, in the ideas of fuzzy sets by Zadeh \cite{Zadeh1965}. Secondly,
-the idea of how inference systems can be created using Zadeh's fuzzy logic come
-from the fuzzy systems created by Takagi and Sugeno \cite{Takagi1985} and, more
-importantly, the one developed by Mamdani and Assilian \cite{Mamdani1975}, as
-the fuzzy systems in the agents follow the architecture proposed in their work.
-
-More specifically, the fuzzy systems used in the proposed method use
-intuitionistic fuzzy sets as the membership functions, which were initially
-proposed by Atanassov in \cite{Atanassov1986} and are further described in
-\cite{Atanassov2003}. The purpose of using intuitionistic fuzzy sets instead of
-Zadeh's traditional fuzzy sets is to increase the system's modelling
-capabilities by introducing the concept of indeterminacy in the membership
-functions. Indeterminacy plays a similar role to uncertainty in traditional
-fuzzy sets, but adds an additional layer for representing uncertainty, similarly
-to how type-2 fuzzy sets do it with their footprint of uncertainty
-\cite{Mendel2002} \cite{Karnik2001}. If the reader is interested in reading more
-about type-2 fuzzy sets, the works by Liang and Mendel \cite{Liang2000} and
-Mendel et al. \cite{Mendel2006} are good starting points.
-
-Intuitionistic fuzzy sets also have the advantage of providing an additional
-layer of interpretation to the fuzzy system. In a similar fashion, Pedrycz's
-shadowed sets \cite{Pedrycz1998} have the purpose of enhancing the
-interpretation of traditional fuzzy sets.
-
-\subsection{Implementations of Fuzzy Systems}
-\label{section:implementations-of-fuzzy-systems}
-
-%% implementations
-%% This cpuld be a Subsection - Mario
-A robust implementation in Java for the creation of fuzzy systems is presented
-by Wagner in \cite{Wagner2013}. Although the toolkit does not provide many tools
-for representing fuzzy systems graphically or for interacting with one, the
-implementation provides libraries for building type-1, interval type-2 and
-generalized type-2 fuzzy systems. The work by Castro et
-al. \cite{castro2007interval} provides similar capabilities as the work by
-Wagner, but in this case it is an implementation in Matlab. The author of this
-thesis developed an implementation for building fuzzy systems in Clojure, which
-is presented in \cite{Hernandez-Aguila2017} and the theory behind it is
-described in \cite{Hernandez-aguila2016}. Although this system lacks an
-implementation for type-2 fuzzy systems like the previous two implementations,
-it does provide an implementation for intuitionistic fuzzy systems.
-
-The implementation of fuzzy systems used in this thesis also proposes a new way
-for representing intuitionistic fuzzy sets. The most common approach to
-graphically representing an intuitionistic fuzzy set is by lattices. Examples of
-this type of representation can be found in the works by Despi et
-al. \cite{Despi2013}, and Deschrijver et al. \cite{Deschrijver2004}. This is a
-popular approach to graphically representing an intuitionistic fuzzy set as it
-enables more compact and concise mathematical expressions. Another
-representation that is suitable for mathematical processes is that of a matrix,
-and is discussed in detail in the works by Parvathi et al. \cite{Parvathi2014},
-Çuvalcioglu et al. \cite{Yilmaz2015}, and Yilmaz et
-al. \cite{Yilmaz2015a}. Other graphical representations for this kind of fuzzy
-sets is by radar charts as in the work by Atanassova \cite{Atanassova2010} and
-by geometrical representations, orthogonal projections and three-dimensional
-representations, as found in the work by Szmidt and Kacprzyk \cite{Szmidt2000}.

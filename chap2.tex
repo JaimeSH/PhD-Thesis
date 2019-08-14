@@ -1,14 +1,15 @@
 \chapter{Preliminaries}
 \label{chapter:preliminaries}
 
-The following Sections describe all the concepts required for the reader to
-understand the proposed method in this thesis. However, it is still assumed that
-the reader has some basic knowledge about programming and computational
-intelligence. For this reason, the following concepts are focused on terms
-related to finance, specifically to trading and financial markets, and to
-agent-based models and multi-agent systems.
+En este capítulo se explican los conceptos básicos de los temas que toman un
+papel importante en el desarrollo del proyecto separados cada uno en secciones,
+principalmente algoritmos genéticos siendo que este tema es la parte primordial
+del proyecto, además de esto se explica de manera detallada los conceptos que se
+tomaran en cuenta en el desarrollo de los métodos que componen el sistema,
+siendo estos open-ended evolution, generación procedural de contenido, los
+conceptos básicos de jugabilidad y la regla de los tercios.
 
-\section{Financial Market}
+\section{Algoritmos genéticos}
 \label{section:financial-market}
 
 A financial market is constructed by the interaction of a number of traders,
@@ -32,532 +33,333 @@ take. Nevertheless, one can create models that closely simulate a financial
 market, and one can assume that these simulations are generalizations of the
 real financial market \cite{Cai2013}.
 
-\section{Trading Strategy}
-\label{section:trading-strategy}
+\section{Generación procedural de contenido}
+\label{section:PCG}
 
-A trading strategy is a set of processes that help a trader to determine
-different aspects of a financial market and to later make trading decisions
-based on these aspects \cite{Kendall2003}. For example, a trader can determine
-that a market is going to follow an uptrend -- that is, that the price of a
-financial market is going to rise -- and take the decision of buying shares of
-the asset of that financial market. Trading strategies can vary in complexity:
-some can use simple moving averages to determine trends and entry points, and
-others can take into consideration many different indicators, as well as the
-trader's experience.
+El término "Generacion procedural de contenido" (Procedural Content Generation o
+PCG por sus siglas en ingles) denota la manera de crear contenido de manera
+automatica mediante algoritmos en lugar de generar los mismos contenidos de
+manera manual.
 
-An untrained person can think that trading a financial market only involves
-deciding when to buy or sell a market. Nevertheless, the possible decisions can
-be as complex as the strategy used to determine them. For instance, when traders
-are about to open a new buy or sell order, they also need to decide the size of
-the order, or how many units are going to be bought or sold. These units can be
-shares in a stock market or an amount of a currency in foreign exchange markets,
-for example. This order can also be delayed: the trader can decide that an order
-will be opened when a certain amount of time passes or when certain price in a
-financial market is reached. Additionally, the trader can specify \textit{stop
-  loss} and/or \text{take profit} prices: after executing a buy or sell order,
-if the market reaches certain price, the trade has to be cancelled, stopping any
-losses or taking any profits that that trade generated since it was created.
+Mientras que la generacion de contenido es un aspecto que se ah utilizado en
+muchos ambitos diferentes como el fotografia, video, anuncios y arte digital, en
+el area de videojuegos se maneja el uso de generacion "procedural" de contenido
+en donde procedural se define como el proceso computacional de una funcion
+particular, en este caso lo que se busca con la generacion procedural de
+contenido es reducir el tiempo que toma generar contenidos de manera manual, la
+siguiente seccion explica mas detalladamante como se utiliza esta mecanica en el
+area de videojuegos.
 
-The initial process of creating a trade order is complex, as noted in the
-previous paragraph, but decisions can also take place after a number of trade
-orders have been executed. The most obvious decision is when one should stop a
-trade. This particular decision has spawned several psychological research
-works, where the decision process is analyzed \cite{Maranon2018}. A clear
-example is depicted in Figure \ref{figure:trading-psychology}, where the
-emotions that traders generally feel when experiencing the earnings or losses of
-a trade are shown (extracted from the work by Baker and Riciardi \cite{BakerHKentandRicciardi2014}).
+\subsection{PCG en el ámbito de videojuegos}
+\label{subsection:PCGInGames}
 
-\begin{figure}
-\centering
-\includegraphics[width=1.0\textwidth]{img/trading-psychology.png}
-\caption{Investor sentiment and the business cycle}
-\label{figure:trading-psychology}
-\end{figure}
+Dentro del ámbito de videojuegos la generación de contenido procedural es un
+aspecto que ha tenido un gran impulso en tiempos recientes debido a que muchas
+empresas de preocupan por sacar al mercado juegos de manera continua, estos
+mismos muchas veces en ciclos de desarrollos muy cortos, por tal se ha buscado
+diferentes maneras de reducir dichos problemas, una herramienta útil que ha
+surgido debido a esto es la generación procedural la cual permite reducir no
+solo los tiempos de desarrollo sino que también permite recudir el espacio de
+memoria total de un juego en particular debido a que ya no es necesario tener
+todos los archivos englobados en un solo lugar sino que lo requerido se obtiene
+de manera automática, de esta misma manera se le permite a las empresas reducir
+el número de personal necesario y por tal reducir los costos de desarrollo.
 
-Stopping a trade does not only involve emotions, as a thorough analysis of the
-market, about the current's account financial situation and the trades
-themselves needs to be performed \cite{Kadiri2015}. Regarding about the first
-step -- an analysis of the market -- it is worth mentioning that these analyses
-are usually different than those performed when deciding when to start trading a
-market \cite{Conrad1998} \cite{Muller1997}. For example, in a stagnated market
-one could decide not to trade a market, but this does not necessarily mean that
-one should close trade orders in this situation; one could consider that this is
-a moment where trades need to be held until further price movements take
-place. A trader can also decide to \textit{partially} stop a trade; that is, a
-trader can decide to sell a certain amount of units from a trade, for
-example. Likewise, a trader can decide to acquire more units from the asset.
+De una manera simple la generacion procedural de contenido tiene tres objetivos
+principales:
+\begin{itemize}
+    \item Brindar apoyo a los creadores para poder crear contenido mas
+    rapidamente.
+    \item Utilizar la generacion de contenido para crear juegos que logrean
+    reaccionar en tiempo real a las acciones de los usuarios, cosa que en caso
+    contrario tendria que encaminarse a escenarios especificos.
+    \item Reducir el espacio en memoria tomado por el contenido generado.
+\end{itemize}
+Una cosa extra que brinda la genracion procedural de contenido es permitir una
+mayor creatividad al momento de generar.
 
-It is usual that a trader \textit{diversifies} its trading portfolio
-\cite{Muller1997}. Diversifying means that a trader starts trading a number of
-financial markets instead of focusing on a single market. The advantages of this
-are that the risk diminishes, as the profits of trading some markets can
-compensate the losses obtained from trading other markets
-\cite{Muller1997}. Diversification can then make trading strategies even more
-complex, as a trader now needs to take into consideration different
-markets. Additionally, markets usually affect the price movements of other
-markets, for example, if wheat price goes up, this can directly impact the price
-of McDonald's stock prices, as many of their products contain wheat-based
-ingredients. Furthermore, if McDonald's stock market is severely affected, this
-could negatively impact the United States' economy, as McDonald's is one of the
-most profitable companies in this country. Depending on the robustness of a
-trading strategy, all of these aspects can be considered to take a decision.
+\subsection{Áreas de interés de generación procedural}
+\label{subsection:PCGAreasOfInterest}
 
-Trading strategies have existed since the activity of trading was created.  To
-illustrate this, one can consider how the Japanese traded certain commodity
-markets, such as the rice market, using strategies based on candlestick patterns
-\cite{Nison1991}. The Japanese charted the prices by representing the open,
-highest, lowest and close prices for a period of time using figures that
-resemble candles and their wicks, as the those seen in Figure
-\ref{figure:candlestick-chart}. The body of a candle in this type of charts
-represents the opening and the closing prices of a session, while the wick
-represents the lowest and highest prices that occurred during the session.
-
-%% These two will be redesigned to match the thesis document style
-\begin{figure}
-\centering
-\includegraphics[width=1.0\textwidth]{img/candlestick-chart.png}
-\caption{Example of a candlestick chart}
-\label{figure:candlestick-chart}
-\end{figure}
-
-Japanese traders noticed patterns that emerged in the candlestick charts. These
-patterns helped the traders to understand the current situation of a financial
-market and to take decisions based on these assumptions. Some example patterns
-are shown in Figure \ref{figure:candlestick-patterns}. For example, if a
-``bullish engulfing'' or a ``rising sun'' candlestick pattern appears in the chart
-of a market, this is considered as a sign of a following uptrend -- which means
-that prices will increase. In contrast, if a ``bearish engulfing'' or ``dark cloud
-cover'' candlestick pattern appears, this signs a following downtrend -- which
-means that prices will decrease. Additionally, there are patterns that indicate
-that a market will start stagnating, such as the ``harami'' candlestick
-pattern. It is worth noting that these candlestick patterns are still used in
-modern trading strategies \cite{Nison1991}.
-
-All the processes described above can be performed manually, i.e. a trader can
-look at price charts and start identifying candlestick patterns, draw moving
-averages over the chart, decide on the number of units to buy or sell, decide on
-take profit and stop loss levels, etc. However, with the introduction of
-computers to the financial world in the mid 20th century, automated or
-algorithmic trading was also introduced \cite{Hendershott2011}. Algorithmic
-trading help traders to partially or totally delegate trading tasks to computer
-software, where buy or sell transactions occur when a set of conditions are
-met. In this thesis, an automated trading strategy is part of the proposed
-method.
+La generación procedural de contenido es un sistema que se enfoca en diferentes
+aspectos en el área del entretenimiento especialmente en el área de videojuegos,
+estos aspectos pueden o no estar ligados unos con otros y ademas cabe mencionar
+que no se enfocan primordialmente en la generación de "objetos" sino mas bien en
+la generación de recursos que pueden ser utilizados en el desarrollo de
+videojuegos, la generacion procedural se enfoca en seis puntos mostrados en la
+imagen \ref{figure:pcg_areas}, cada uno se explica en un apartado iniciando con
+el 'Diseño de niveles' en el capitulo \ref{subsection:LevelDesign}, la
+generacion de graficos en el capitulo \ref{subsection:Visuals}, la creacion de
+audio en el capitulo \ref{subsection:Audio}, creacion de narrativa o historias
+en el capitulo \ref{subsection:Narrative}, diseño de reglas y mecanicas en el
+capitulo \ref{subsection:rulesandmechanics} y la generacion de juegos completos
+explicada en el capitulo \ref{subsection:games}.
 
 \begin{figure}
-\centering
-\includegraphics[width=1.0\textwidth]{img/candlestick-patterns.png}
-\caption{Examples of candlestick patterns: (a) bullish engulfing, (b) bearish engulfing, (c) harami, (d) dark cloud cover, (e) rising sun}
-\label{figure:candlestick-patterns}
+    \centering
+    \includegraphics[width=0.6\textwidth]{img/pcg_areas.png}
+    \caption{Areas de PCG en videojuegos}
+    \label{figure:pcg_areas}
 \end{figure}
 
-\section{Technical Analysis}
-\label{section:technical-analysis}
+\subsubsection{Diseño de niveles}
+\label{subsection:LevelDesign}
 
-Since many decades ago, financial traders have implemented statistical models to
-forecast time-series, as part of a field called technical analysis
-\cite{Lo2000}. This type of market analysis is characterized by using past
-financial data to describe certain aspects of a market, such as its volatility,
-trend, and momentum \cite{Achelis2000}. These indicators receive the name of
-technical indicators. Some examples of technical indicators are those created by
-Welles Wilder, such as the Relative Strength Index (RSI) and the Average
-Directional Index \cite{Wilder1978}, and an example of an oscillator, which is a
-type of technical indicator which usually tells if a market is overbought or
-oversold, is the Stochastic Oscillator \cite{Schirding1984}, created by George
-Lane. In contrast to technical analysis, fundamental analysis relies on the
-examination of the underlying forces that affect a particular financial market
-(or several of them), instead of just relying on the price movements in a
-time-series. As an example of fundamental analysis, a trader can use the
-financial statements of a public company to estimate if the price of their stock
-will rise.
+La area del desarrollo de niveles es una de las populares en PCG debido a que
+los niveles son la parte escencia de un juego debido a que es el area sobre el
+cual un jugador puede interactuar, la representacion de estas areas se puede dar
+desde imagenes en 2D simplemente con el alto y ancho de los objetos hasta
+elementos en 3D que abarquen tambien el grosor de los objetos.
 
-A more modern approach to perform these analyses is to use machine learning
-techniques. Using machine learning algorithms, researchers create regression
-models using technical or fundamental indicators as training datasets
-\cite{Connor2005}.  Examples of regression techniques are autoregression
-\cite{burg1968new}, symbolic regression \cite{billard2002symbolic}, and linear
-regression \cite{kutner2004applied}. Other more elaborated techniques exist in
-machine learning for regression or curve-fitting tasks, such as the use of
-artificial neural networks \cite{melin2007hybrid} and support vector regression
-\cite{basak2007support}.
+Debido a que los niveles son escencialmente el area principal de interaccion en
+un videojuego estos deben de considerar los aspectos funcionalidad y estetica
+para que exista una buena interaccion y sea llamativo a los usuarios, de esta
+manera se pueden crear areas con tonos oscuros y ambiente tetrico para entregar
+un nivel con tematica de terror, la generacion de niveles de juego es un tema
+reciente en el ambito de investigacion debido a los elementos que se deben de
+tener en cuenta sin embargo dentro del ambito de videojuegos, es un elemento
+comunmente utilizado, algunos ejemplos recientes siendo Spelunky, Minecraft,
+Disgaea.
 
-\subsection{Retracements in Financial Markets}
-\label{subsection:retracements-in-financial-markets}
+Primero tenemos el juego de plataforma Spelunky desarrollado por Derek Yu, el
+juego consta de multiples niveles alrededor de cinco diferentes areas, cada area
+con un estilo diferente (niveles con hielo, lava, etc.) en este juego los niveles
+que recorre el jugador son desarrollados de manera procedural por diferentes
+algoritmos dependiendo el area en la que se encuentre el juegador.
 
-A retracement in a financial market is any market price movement that goes
-against a clear trend in a determined timeframe, but where the magnitude is not
-significant enough to point to a reversal in the market's direction. For
-example, if a stock market has been going upwards in price for the past three
-months, and in the past week the price went downwards, this movement could be
-considered a retracement. The retracement movement is confirmed once the market
-retakes the general price direction. If the market never retakes this general
-direction, a reversal is said to have occurred. An example of retracements in a
-financial market price chart can be seen in Figure
-\ref{figure:retracements-in-financial-market}.
+El segundo ejemplo es un videojuego desarrollado por Markus Persson llamado
+Minecraft, este juego consta de un area estilo caja de arena en donde el jugador
+puede realizar las acciones que quiera, las estructuras estan definidas en
+manera de bloques con diferentes texturas y propiedades que el jugador puede
+utilizar para construir diferentes cosas, la manera en como se utiliza la
+generacion de contenido es mediante la generacion de todo un nivel al iniciar el
+juego de tal manera que se utiliza una semilla de generacion y se utiliza el
+metodo \textit{Perlin Noise} 3D con interpolacion lineal para genrar los biomas,
+elementos y entidades que conformaran el nivel.
+
+Finalmente tenemos el juego Disgaea desarrollado por Nippon Ichi Software, este
+es un juego de estrategia por turnos en donde el objetivo es eliminar a todos
+los enemigos en un mapa para continuar al siguiente, la manera en como se
+utiliza la generacion de contenido procedural es en una seccion extra del juego
+en donde se puede entrar a un arma para completar niveles gradualmente mas
+dificiles para darle mas poder a dicha arma, en esta parte los niveles que se
+encuentra el jugador son generados proceduralmente tomando en cuenta las alturas
+de las partes donde se puede caminar y la colocacion de los enemigos en el mapa
+\ref{figure:DisgaeaIW}, para la generacion se toma en cuenta el nivel del arma y
+su rareza, mientras mas altos sean estos valores de igual manera los nievels
+generados seran mas dificiles.
 
 \begin{figure}
-\centering
-\includegraphics[width=1.0\textwidth]{img/retracements.png}
-\caption{Example of retracements in a financial market price chart}
-\label{figure:retracements-in-financial-market}
+    \centering
+    \includegraphics[width=1.0\textwidth]{img/DisgaeaIW.png}
+    \caption{Nivel generado en el juego Disgaea}
+    \label{figure:DisgaeaIW}
 \end{figure}
 
-A special type of retracements are Fibonacci retracements. In this type of
-retracements, the market usually follow retracement movements that correspond to
-Fibonacci ratios. For example, if a market has been following an uptrend in its
-prices for the past 1000 units, and the market suffers a retracement of
-approximately 382 units, it is said to be a Fibonacci retracement, as this
-retracement follows a ratio of 0.382. Fibonacci retracements commonly occur
-in financial market price charts. An example of fibonacci retracements can be
-seen in Figure \ref{figure:fibonacci-retracements-in-financial-market}. It is
-worth to mention that retracements do not always occur and they do not follow
-the ratios exactly.
+\subsection{Gráficos}
+\label{subsection:Visuals}
 
-% Seems like ``retracements'' are heuristics. You should make this clear, we
-% do not want the readers to think they are proven facts, or worst, that
-% they think we are treating them as if they where. 
+La area de desarrollo de graficos se encarga principalmente de generar las
+representaciones visuales de los juegos debido a que la mayor parte de los
+juegos llevan una parte visual a menos que no se requiera, es necesario generar
+una imagen que denote lo que se quiere dar a entender en un juego, de esta
+manera se le brinda al jugador un nivel mas de inmersion en la situacion
+mediante el uso de paletas de colores o imagenes en pantalla que puedan
+representar mejor las situaciones que se presentan.
 
-\begin{figure}
-\centering
-\includegraphics[width=1.0\textwidth]{img/fibonacci-retracements.png}
-\caption{Example of Fibonacci retracements in a financial market price chart}
-\label{figure:fibonacci-retracements-in-financial-market}
-\end{figure}
+El ambito de generacion de graficos ah sido uno de los mas explotados debido a
+que es posible generar graficos desde simples representaciones de 8 bits como
+representaciones photorealisticas de los eventos u objetos presentes en un
+juego, tal es el caso explicado en el paper de Risi S. et al.\cite{Risi2012} en
+donde utilizan una red de produccion de patrones composisionales (CPPN por sus
+siglas en ingles) la cual es una variante de las redes neuronales artificiales
+(ANN) regulares, utilizando esta red se busco modificar un circulo de tal manera
+que la resultante de tal modificacion creara un patron en forma de una flor, de
+igual manera la forma de crear diversidad en los tipos de flores generadas fue
+mediante el uso de la neuroevolucion de topologias aumentativas (NEAT) mediante
+el cual las redes generadas se alteraban mediante la modificacion de conecciones
+entre neuronas y la adicion de nuevos nodos de tal manera que se buscaba un
+nivel adecuado de complejidad para las redes que generaron diferentes tipos de
+patrones de flores.
 
-\section{Computational Intelligence}
-\label{section:computational-intelligence}
+Mientras que un segundo paper escrito por Erin J. et al.\cite{Hastings2009} en
+el cual presentan un nuevo algoritmo de generacion de contenido llamado
+neuroevolucion de topologias aumentativas para generacion de contenido (cgNEAT)
+el cual se encarga de generar contendio grafico y contenido del juego deacuerdo
+a las preferencias de un jugador mientras el juego esta en ejecucion, para la
+evaluacion del contenido generado se desarrollo un juego multijugador en linea
+llamado \textit{Galactic Arms Race} en el cual la cgNEAT se encarga de generar
+contenido para todos los jugadores y ellos eran quienes proveian la
+retroalimentacion del funcionamiento del algoritmo.
 
-Computational intelligence is a field of computer science similar to artificial
-intelligence. In contrast to artificial intelligence, where symbolic logic is
-used to represent reasoning, computational intelligence relies on statistical
-and bio-inspired approaches
-\cite{JangJyh-ShingRogerandSunChuen-TsaiandMizutaniEijiandHo1998}. As the models
-generated by computational intelligence are often not exact, but rather an
-approximation to the problem it is modelling, it is sometimes also called soft
-computing.
+\subsection{Audio}
+\label{subsection:Audio}
 
-The following Sections discuss the computational intelligence techniques that
-are used in the proposed method of this thesis.
+El ambito de generacion de audio en videojuegos se puede considerar como un
+punto opcional dependiendo del juego que se este desarrollando sin embargo el
+audio juega un papel importante en la experiencia que se le brinda a un jugador
+dentro del juego debido a que mediante el uso de componentes sonoros se pueden
+influir las emociones que se quieren mostrar en lugares especificos, desde cosas
+simples como el uso de sonidos de objetos como escuchar un teclado siendo
+utilizado hasta la utilizacion de pistas de audio en areas o momentos clave del
+juego para demostrar momentos dramaticos, tristes o de accion. 
 
-\subsection{Fuzzy Sets}
-\label{subsection:fuzzy-sets}
+Cabe mencionar que es posible utilizar instrumentos musicales o la
+implementacion de orquestas para de igual manera generar estos ambientes sin
+embargo algunos utilizan este tipo de generacion para crear pistas que sean
+capaces de adaptarse a los sucesos que transcurren en el momento [Ref 220, 128
+del "AI and Games"] de igual manera existen metodos para generar contenido
+mediante el uso de pistas de audio, tal el caso de [Ref Audio Surf].
 
-A traditional set is a collection of items that share a common
-characteristic. This characteristic serves as a membership, because all the
-items in a universe either have that characteristic -- and then the item is part
-of the set -- or it does not have it -- and then the item is not part of the
-set. Traditional sets can be extended to fuzzy sets, as explained by Zadeh
-\cite{Zadeh1965}. Fuzzy sets are then a generalization of traditional sets,
-i.e. any traditional set can be represented as a fuzzy set. The difference
-between these two types of sets lies in the concept of membership: memberships
-are not only used to represent binary outcomes, i.e. \textit{true} or
-\textit{false}, but a possibly infinite number of outcomes. An item can now be
-partially a member of a set, and the only way an item is not part of such set is
-if its membership is totally \textit{false}. In order to represent this grade of
-membership one can use real numbers. Thus, one can say, for example, that an
-item is \textit{0.7 green}, \textit{0.5 blue} and \textit{0.0 red}. These values
-can represent an adverb and an adjective, such as ``very green,'' ``somewhat blue''
-and ``not red at all.'' This is especially useful when designing fuzzy systems
-(see Subsection \ref{subsection:fuzzy-systems}).
+Finalmente tenemos \textit{Mezzo} desarrollado por Daniel B. este paper muestra
+un programa de computadora del mismo nombre diseñado con el fin de generar
+musica de la era romantica que puede ser utilizada en juegos de computadora, el
+software fue desarrollado con el proposito de poder darle mas expresividad a
+eventos que ocurren en juegos de computadora, esto es mediante el uso de los
+elementos presentes en la escena como las partes que conforman la piexa musical,
+para esto sus acciones son traducidas como diferentes cantidades de tension
+armonica lo cual permite que la pieza musical corresponda al estado del juego
+asi como a las acciones que realizan los personajes.
 
+\subsection{Narrativa}
+\label{subsection:Narrative}
 
-\subsection{Fuzzy Systems}
-\label{subsection:fuzzy-systems}
+El ambito de generacion de narrativa en videojuegos se encarga de manera basica
+de generar historias que tengan sentido y sean entretenidas, el uso de PCG para
+el ambito de narrativa se ah tomado de diferentes angulos, el primero es
+sencillamente crear la historia del lugar en donde se desarrollan las cosas,
+esto es generar toda la historia desde un punto especifico y asi crear una
+"linea" de accion que un jugador debera seguir, mientras que otro de los
+aspectos es la generacion de historia que se adapte a las acciones del jugador,
+esto es, que a medida que el jugador progrese en un juego realizando acciones
+especificas el juego adapte la historia a generar deacuerdo a dichas acciones.
 
-In traditional logic one can generate logical inferences, such as \textit{if
-  it's raining, then there are clouds in the sky}. In a similar fashion, one can
-use fuzzy sets to represent the antecedents and consequents in a logical
-inference process. For example, one can extend the previous example to:
-\textit{if it's raining a lot, then there are many clouds in the sky}.
+Algunos ejemplos de este ambito de generacion se muestran en (Ref Facade), (Ref
+Versu) y (Ref Blood y Laurels)
 
-There is a number of ways in which one can construct a fuzzy inference system,
-where one or more inputs or antecedents can be used to generate one or more
-outputs or consequents. Arguably, the two most popular types of fuzzy inference
-systems are the ones created by Mamdani and Assilian \cite{Mamdani1975}, and
-Takagi and Sugeno \cite{Takagi1985}. These systems use a series of fuzzy sets to
-represent the relationship between an input and its grade of membership to a
-set. These sets usually represent adjectives that describe the inputs, and are
-also considered to be the antecedents in the fuzzy inference system. For
-example, an input of 0.8 can represent a ``very high'' value. After obtaining
-these grades of membership, one can use these values to ``fire'' or ``activate'' the
-consequents. In the case of a Mamdani system, the consequents are represented as
-fuzzy sets, just like the antecedents. In contrast, in a Sugeno system,
-consequents are represented by mathematical functions. A set of rules is used to
-determine the relationship between the antecedents and the consequents, for
-example: \textit{if food quality is high then tip is high}. The aforementioned
-rule is creating a relationship between the fuzzy set that represents ``high food
-quality'' in the antecedents, and the fuzzy set that represents ``high tip'' in the
-consequents. Further continuing with the example, if ``food quality'' is
-represented by a value of 0.8, the rule that creates the relationship between
-``food quality'' and ``tip'' could determine a ``tip'' of 0.8 too, depending on what
-membership function and what parameters are decided to be used to represent
-each.
+\subsection{Reglas y Mecanicas}
+\label{subsection:rulesandmechanics}
 
-It has been explained how a relationship between antecedents and consequents can
-be constructed in a fuzzy inference system. Nevertheless, the most interesting
-problem arises when a problem involves several fuzzy sets to represent different
-adjectives for single antecedents or consequents. In these cases, depending on
-the fuzzy rules, a number of consequents can be fired according to the inputs to
-the system. As seen in Figure \ref{figure:antecedents}, the input -- represented
-by the dotted vertical black line -- is associated with three fuzzy triangular
-sets or antecedents, where it ``activates'' two of them. According to a set of
-fuzzy rules, it then fires a set of triangular fuzzy sets that represent the
-consequents, as seen in Figure \ref{figure:consequents}.
+Las reglas y mecanicas de un juego proveeen de un marco de trabajo en el cual el
+jugador puede realizar acciones y el como debe de influenciarlas hacia un
+objetivo final, las reglas y mecanicas de un juego pueden variar dependiendo del
+tipo de juego que se trate, por ejemplo en juegos de estilo plataforma la regla
+de terminacion puede ser simplemente llegar hasta cierto punto del nivel
+mientras que las macanicas pueden incluir saltar, correr o agacaharse, este
+conjunto de reglas permite que el jugador no realize acciones no preevistas por
+los programadores y de tal forma limita a un jugador a cierca cantidad de
+acciones y consecuentes posibles las cuales debera de aprovechar de diferentes
+maneras para continuar.
 
-The fuzzy sets that represent the consequents are cut, and new shapes are
-obtained using those cuts, as represented by the green shapes in Figure
-\ref{figure:consequents}. These shapes are aggregated and result in the output
-of the fuzzy inference system, and this result can then be defuzzified
-(converted from a fuzzy set to a scalar or crisp value) using different methods,
-such as obtaining the centroid of the shape. In this example, a Mamdani fuzzy
-inference system is considered; in the case of a Sugeno system, for example, the
-antecedents would be represented by arbitrary mathematical functions, instead of
-membership functions representing shapes such as the triangles in the example
-presented above.
+Mientras que el uso de reglas permite tener un juego mas balanceado algunas
+ocasiones el cambiar el conjunto de reglas permite crear diferentes tipos de
+juegos, tomando el ejemplo anterior es posible que un juego de plataformas se le
+permita a un jugador volar en un nivel lo cual provocaria que las mecanicas se
+requieran acomdar a esta nueva habilidad y de igual manera los niveles de un
+juego se tengan que reimaginar de tal modo que ahora se pueda utilizar en
+ciertas o se coloquen lugares que solo se pueden acceder con esa habilidad por
+ejemplo la transicion de reglas y mecanicas entre los juegos Super Mario Bros.
+(Nintendo, 1985) y Super Mario World (Nintendo, 1990).
 
-\begin{figure}
-\centering
-\includegraphics[width=1.0\textwidth]{img/antecedents.png}
-\caption{Antecedents in a fuzzy system}
-\label{figure:antecedents}
-\end{figure}
+Para la evaluacion de la generacion de mecanicas y reglas de un juego existen
+diferentes metodos a utilizar, el primero se basa en el balance de las reglas es
+decir en caso de ser un juego para dos o mas jugadores el objetivo de evaluar
+seria que todos los jugadores tengan las mismas probabilidades de ganar
+utilizando las mecanicas del mismo juego, mientras que otra manera de evaluar
+seria mediante la facilidad que tienen las mecanicas de ser aprendidas por los
+jugadores.
 
-\begin{figure}
-\centering
-\includegraphics[width=1.0\textwidth]{img/consequents.png}
-\caption{Consequents in a fuzzy system}
-\label{figure:consequents}
-\end{figure}
+En cuanto a ejemplos de este tipo de generacion se encuentran algunas
+investigaciones academicas tales como la de Ludi (Ref Ludi num76) otro caso fue
+escrito por Togelius et al. (Ref Togelius num716) mientras que un ultimo caso es
+el de Nielsen et al. (Ref Nielsen num492).
 
-\subsection{Fuzzy Systems Software}
-\label{subsection:fuzzy-systems-software}
+\subsection{Juegos}
+\label{subsection:games}
 
-There are a number of implementations of fuzzy systems toolboxes or libraries
-where a programmer can design a fuzzy system to be integrated with other
-software projects or used as stand-alone applications. The vast majority of this
-software is dedicated to the creation of type-1 fuzzy systems, i.e. systems that
-do not consider uncertainty in the grade of membership of their antecedents or
-consequents.
+Mientras que las facetas de generacion anteriores se han enfocado en aspectos
+especificos de juegos mientras que en este aspecto en particular se toma un
+enfoque global, esto es desde la generacion de partes visuales hasta la 
+generacion de bandas sonoras, esto demuestra como todos los aspectos de un
+juegose relacionan unos con otros, un ejemplo de esta relacion seria tomar un
+juego en particular y agregar acciones que originalmente no exitian, para poder
+agregar estas acciones se debe de considerar el aspecto visual, es decir el como
+debera de representarse visualmente tal accion, aspectos de sonidos en caso de
+que una accion requiera de algun efecto de sonido que represente tal accion,
+utilizando el ejemplo de agregar la mecanica de volar, el aspecto visual se
+representaria en un cambio visible en el personaje controlado, por ejemplo,
+dibujar alas y que se vea una animacion de movimiento al volar, en el caso del
+aspecto del sonido el aleteo o movimiento generado por dichas alas al estar
+volando puede tener un sonido unico para identificarlo.
 
-Wagner presents a robust implementation of FISs developed in Java in
-\cite{Wagner2013}. Although the toolkit does not provide many tools
-for representing a FIS graphically or for interacting with one, the
-implementation provides libraries for building type-1, interval type-2, and
-generalized type-2 fuzzy systems.
+Para este caso existen diferentes maneras de intentar generar juegos nuevos, tal
+es el caso de Game-O-Matic (Ref Game-o-matic num723), otra investigacion realizada
+por Nelson et al. (Ref Nelson num484), finalmente uno de los mejores generadores
+de juegos lleva en nombre de ANGELINA (Ref ANGELINA num135-137).
 
-Moreover, the work by Castro et al. \cite{castro2007interval} provides the same
-capabilities as the work by Wagner, but in this case it is an implementation in
-Matlab. A direct disadvantage of using this programming language is that Matlab
-is not a free nor open source software.  Nevertheless, the language is still
-widely used in the scientific community. Furthermore, this implementation
-follows an interface similar to the one provided by Matlab's fuzzy logic
-toolbox, and provides more robust graphical implementations than the current
-version of Wagner's toolkit.
+Los anteriores generadores a pesar de no ser perfectos han permitido dar un gran
+paso en la generacion de contenido o mas bien en la generacion de juegos, sin
+embargo aun falta controlar aspectos que permitan que las generaciones de tal
+contenido logren involucrar todos los aspectos de la generacion de contenido,
+esto podria darse mediante el uso de multiples agentes que contantemente evaluen
+los aspectos generados pero que al mismo tiempo logren comunicarse unos con
+otros y poder evaluar los juegos generados de manera mas amplia.
 
-For this this thesis a fuzzy system was created from scratch. This decision was taken because it would facilitate its integration with the multi-agent system that was also implemented from scratch and because the author of the proposed method could not find any implementation of a Mamdani intuitionistic fuzzy system at the time when the implementation of the system started. This implementation is described in \cite{Hernandez-aguila2016} and \cite{Hernandez-Aguila2017}.
-
-\subsection{Intuitionistic Fuzzy Sets}
-\label{subsection:intuitionistic-fuzzy-sets}
-
-In contrast to the traditional fuzzy sets discussed in Subsection
-\ref{subsection:fuzzy-sets}, intuitionistic fuzzy sets consider a grade of
-non-membership in addition to a grade of membership associated to an element in
-the fuzzy set, as expressed by Equation \ref{eq:ifs-definition}. Intuitionistic fuzzy
-sets were defined by Atanassov in \cite{Atanassov1986}.
-
-% intuitionistic fuzzy set
-\begin{equation}
-  \label{eq:ifs-definition}
-  A^{*} = \{\langle x, \mu _{A} (x), \nu _{A} (x) \rangle | x \in E\}
-\end{equation}
-
-For every of the elements contained in an intuitionistic fuzzy set,
-Equation \ref{eq:intuitionistic-interval} must hold true.
-
-% intuitionistic interval
-\begin{equation}
-  \label{eq:intuitionistic-interval}
-  0 \leq \mu_{A}(x) + \nu_{A}(x) \leq 1
-\end{equation}
-
-Intuitionistic fuzzy sets are an extension to traditional fuzzy sets, as any
-traditional fuzzy set can be expressed as a particular case of an intuitionistic
-fuzzy set, as in Equation \ref{eq:ifs-form}.
-
-% every ordinary fuzzy set has the form
-\begin{equation}
-  \label{eq:ifs-form}
-  \{ \langle x, \mu_{A}(x), 1 - \mu_{A}(x) \rangle | x \in E \}
-\end{equation}
-
-If the sum of the membership $\mu_{A}(x)$ and non-membership $\nu_{A}(x)$ of an
-element is less than $1$, the concept of indeterminacy or hesitancy arises,
-which is described by Equation \ref{eq:indeterminacy}. Indeterminacy is used to represent
-doubt in the grade of membership of an element in an intuitionistic fuzzy set
-and is described by Equation \ref{eq:indeterminacy}.
-
-% if
-\begin{equation}
-  \label{eq:indeterminacy}
-  \pi_{A}(x) = 1 - \mu_{A}(x) - \nu_{A}(x)
-\end{equation}
-
-Traditional fuzzy sets can be extended to increase their capabilities of
-representing uncertainty by introducing the concept of footprint of
-uncertainty. A footprint of uncertainty is achieved by extending the membership
-function, where each of its values are now fuzzy sets themselves, instead of
-crisp values. This type of traditional fuzzy sets are commonly labeled as type-2
-fuzzy sets in the literature \cite{Mendel2006}.
-
-Indeterminacy serves a different purpose than the one of footprint of
-uncertainty. Instead of extending the uncertainty provided by traditional fuzzy
-sets, indeterminacy helps to model doubt \cite{Xu2007}. For example, if
-traditional fuzzy sets can model the following sentence: ``the object is very
-hot'', indeterminacy can model ``it is unsure that the object is very hot''.
-
-\subsection{Intuitionistic Fuzzy Systems}
-\label{subsection:intuitionistic-fuzzy-systems}
-
-Human beings tend to express their knowledge using natural language and certain
-words to describe abstract objects or experiences in fuzzy terms. For example,
-after generating a financial report, one is interested in knowing if an
-organization is ``doing well,'' or if it is ``not profitable enough.'' The
-previous examples are fuzzy statements that need to be inferred from data, but
-this data can also be uncertain (e.g. noise is present in the data). For that
-reason, fuzzy sets have been proposed for data modeling and knowledge
-representation. On the other hand, fuzzy inference systems (FIS) have been
-applied in the construction of control and pattern recognition systems also
-based on such fuzzy data. Nevertheless, occasionally there are situations where
-a traditional FIS can not properly model certain data sets, due to high levels
-of uncertainty present in the data (e.g., noise). As a consequence, researchers
-have extended fuzzy sets and fuzzy logic theory to allow the construction of
-systems that can successfully represent noisy data.
-
-One of the extensions to fuzzy sets are type-2 fuzzy sets \cite{Mendel2002}. The
-idea behind this extension is to add uncertainty to the membership of an element
-to a fuzzy set. In other words, an element will have a grade of membership to a
-fuzzy set, and this grade of membership will be represented as another fuzzy
-set. For example, this technique allows a fuzzy system to be more resilient to
-data with many outliers; it will be easier for a type-2 fuzzy system to create a
-generalized model of the data than a type-1 fuzzy system. Many works have
-incorporated type-2 fuzzy sets into their systems and have obtained better
-performance when compared to their traditional or type-1 fuzzy sets counterparts
-\cite{Liang2000}. Despite this increase in capabilities for handling
-uncertainty, type-2 fuzzy systems have the disadvantage of being significantly
-slower than type-1 systems \cite{Sepulveda2012}. The reason for this penalty in
-performance is mainly due to how a type-2 fuzzy system is implemented, that is,
-the programming language used for it and what type of programming techniques
-were used to implement the fuzzy theory. One way to mitigate this problem is to
-restrict the fuzzy sets that represent the grade of membership for an element,
-in order to simplify the calculations needed for the system to generate
-inferences, and therefore quicken the process. Interval type-2 fuzzy systems
-were the result of implementing this idea, which are a particular case of
-general type-2 fuzzy systems \cite{Mendel2006}. Another way is to reduce the
-complexity of the algorithm, such as in the case of the work from Karnik and
-Mendel \cite{Karnik2001}.
-
-Fuzzy sets can also be extended to intuitionistic fuzzy sets (IFS), which are
-proposed by Atanassov in \cite{Atanassov1986}. As in the case of type-2 fuzzy
-sets, IFS increase the capabilities of a traditional fuzzy set to represent
-uncertainty, by introducing the concept of indeterminacy. Basically an element
-that belongs to an IFS is described by a grade of membership (\(\mu\)) and a
-grade of non-membership (\(\nu\)). One can express how well an element belongs
-to a fuzzy set and how well an element does not belong to that fuzzy set as
-well. As a consequence, the sum of the values for the membership and
-non-membership are not always equal to 1, and \(1-(\mu + \nu)\) will be known as
-indeterminacy, which is represented by the symbol \(\pi\). FISs that implement
-intuitionistic fuzzy sets have at least two advantages: 1) they can handle more
-uncertainty than traditional FISs and can process their inferences to crisp
-values with almost no resource performance impact, and 2) they can still be
-extended to use type-2 fuzzy sets, giving as a result an intuitionistic type-2
-FIS.
-
-The use of IFSs in a traditional FIS should enable the handling of more
-uncertainty, and one could prefer an intuitionistic FIS (IFIS) to obtain better
-accuracies without sacrificing time performance, as inferences in a type-2 FIS
-(T2-FIS) are very time consuming compared to a type-1 FIS (T1-FIS). This is a
-consequence of the complex type reducing procedure that is involved in the
-defuzzification stage in a T2-FIS \cite{Liang2000}. Several improvements to the
-algorithms involved in the inference process in a T2-FIS have been proposed to
-alleviate this problem, such as the Karnik-Mendel algorithm \cite{Karnik2001}
-and shadowed sets \cite{Pedrycz1998}. Nevertheless, a T2-FIS is usually several
-times slower than a T1-FIS. Because of this time performance impact, many works
-that require handling more uncertainty than a T1-FIS use a particular case of
-T2-FIS, the interval T2-FIS (IT2-FIS) \cite{Liang2000}, which is faster than a
-general T2-FIS (GT2-FIS). A type-1 IFIS (T1-IFIS) should perform better than a
-T1-FIS in terms of accuracy (in problems involving data with high levels of
-uncertainty), and should be faster than a T2-FIS. Furthermore, IFSs can be
-implemented as part of a T2-FIS, giving as a result a type-2 IFIS.
-
-\subsection{Membership and Non-Membership Functions Design}
-\label{subsection:membership-and-non-membership-functions-design}
-
-At the time of writing this thesis, there are not many works involving Mamdani
-type intuitionistic inference systems yet, and the author of this work is only
-aware of the work by O. Castillo et al. \cite{castillo2007intuitionistic}, and
-A. Hernandez-Aguila and M. Garcia-Valdez \cite{Hernandez-aguila2016}. As a
-consequence of this lack of works involving Mamdani FISs, there is not a common
-way to graphically represent an IFS for its use as membership and non-membership
-functions for an IFIS. Additionally, there is not a common way to graphically
-represent the architecture of an IFIS.
-
-In this thesis we use the method to graphically represent IFISs' architectures
-proposed in \cite{Hernandez-aguila2017-2} in which the author of this thesis
-participated. Figure \ref{figure:ifs-proposed} depicts an example of an IFS that
-uses the graphical representation proposed in the aforementioned work, and
-Figure \ref{figure:ifs-proposed-diff-mu-sd} shows a similar IFS where the mean
-of the non-membership function is different than the mean of the membership
-function. Also, it is noteworthy how the membership function has core in 0.7 --
-instead of 1, as in traditional fuzzy sets -- and the non-membership function
-has a core in 0.3.
-
-\begin{figure}
-\centering
-\includegraphics[width=0.7\textwidth]{img/ifs.pdf}
-\caption{Example of an intuitionistic fuzzy set with the proposed graphical
-  representation}
-\label{figure:ifs-proposed}
-\end{figure}
-
-\begin{figure}
-\centering
-\includegraphics[width=0.7\textwidth]{img/ifs-diff-mu-sd.pdf}
-\caption{Example of an intuitionistic fuzzy set with the proposed graphical
-  representation with different mean and indeterminacy}
-\label{figure:ifs-proposed-diff-mu-sd}
-\end{figure}
-
-\section{Genetic Algorithms}
+\section{Algoritmos Geneticos}
 \label{section:genetic-algorithms}
 
-A genetic algorithm (GA) is an optimization algorithm inspired in evolution. For
-this reason GAs are considered to be part of a subfield of optimization
-algorithms called evolutionary algorithms \cite{Whitley1994}. A GA proposes an
-initial set of possible solutions to a problem -- usually called a
-population. Each solution in this population is called a chromosome and
-sometimes they are referred as individuals. The population is evaluated against
-a fitness function, which is going to determine each of the individuals'
-performance when trying to solve a particular problem. This problem commonly
-involves finding sets of parameters that will cause a system to minimize or
-maximize an error.
+Los algoritmos geneticos (Genetic Algorithm, GA por sus siglas en ingles) son
+algoritmos inspirados en la evolucion Darwiniana y utilizados para la
+optimizacion de procesos, fue introducido por John Holland en 1975
+\cite{Holland1975}, los GA son metodos de optimizacion y busqueda basados en los
+principios de la seleccion natural y genetica, la manera de representarlos es
+mediante un grupo de individuos que representan posibles soluciones a un
+problema y mediante el uso de operadores geneticos estos individuos se cruzan y
+evolucionan para acercarse mas al objetivo, el cual puede ser minimizar o
+maximizar un valor resultaado de un sistema.
 
-The population in a GA undergoes an evolutionary process that involves the
-crossover among the fittest individuals in the population, and the elimination
-of those individuals that perform the worst according to the fitness
-function. The crossover process is usually performed by recombining the genes in
-the chromosomes of the selected individuals -- which are usually the
-fittest. The aforementioned process is usually repeated for a number of
-iterations, which are commonly called generations.
+En otras palabras un GA es un metodo para resolver problemas de optmizacion
 
-In GAs and other evolutionary algorithms, the population will usually start to
-become more fit to solve a problem after a series of generations, but it is
-common that none of the individuals finds the best possible solution for the
-problem. Furthermore, running an evolutionary algorithm several times will most
-likely yield different results, as the initial population of solutions are
-randomly generated. For this reason, evolutionary algorithms are said to be
-meta-heuristic search algorithms, as they find suboptimal solutions to other
-problems that do not directly involve the evolutionary algorithm, and they are
-also considered stochastic algorithms \cite{Harik1999}.
+Deacuerdo a una explicacion proporcionada por Whitley en uno de sus articulos
+\cite{Whitley1994}, un algoritmo genetico (GA) son algoritmos de optimizacion
+inspirados en el proceso natural de evolucion. Por esta razon los GAs son
+considerados como parate de una sub-area de algoritmos de optimizacion llamada
+algoritmos evolutivos. La manera en como funciona un GA es que se propone tener
+un conjunto inicial de posibles soluciones a problema, estas soluciones son
+llamadas poblacion dentro del algoritmo. Cada una de estas soluciones propuestas
+lleva el nombre de individuos y en ocaciones se definen como cromosomas. Esta
+poblacion es evaluada mediante el uso de una funcion de aptitud encargada de
+determinar el rendimiento de cada uno de los individuos como una de las posibles
+soluciones para el problema que se esta tratando. Este tipo de problemas
+comunmente involucran encontrar un conjunto de parametros que permitan minimizar
+o maximizar los resultados obtenidos en un sistema.
+
+El proceso que se realiza en un GA se describe de la siguiente manera, primero
+la poblacion es sometida a un proceso de evolucion que involucra la realizacion
+de cruces entre los individuos de la poblacion que tienen el mejor rendimiento
+en la generacion, de igual manera aquellas soluciones que tengan un mal
+desempeño deacuerdo a la funcion de aptitud son removidos de la lista de la
+poblacion para las generaciones subsecuentes. El proceso de cruce de individuos
+se realiza mediante la recombinacion de geners en los cromosomas de los
+individuos seleccionados los cuales son seleccionados en base a sus resultados
+en la funcion de aptitud siendo aquellos que llevaran a cabo los cruces los
+mejores. Este proceso mencionado se repite durante un numero determinado de
+iteraciones las cuales llevan el nombre de generaciones.
+
+El objetivo de los GAs asi como en otros algoritmos evolutivos es que, mientras
+las generaciones van pasando la poblacion comenzara a volverse mas apta y se
+encaminara a cierto punto o valor que se espera sea el indicado para resolver un
+problema, sin embargo, es comun que ninguno de los individuos logre llegar a una
+solucion optima para el problema presentado. Sin embargo, al ejecutar el
+algoritmo multiples veces el algoritmo evolutivo lograra proveer varios
+resultados diferentes, esto es debido a que la poblacion inicial en cada ciclo o
+ejecucion se genera de manera aleatoria. Por esta razon, los algoritmos
+evolutivos y por ende los algoritmos geneticos son considerados como algoritmos
+de busquedas meta-heuristicas, debido a que son capaces de encontrar soluciones
+casi optimas para problemas en donde los algoritmos evolutivos no sean
+involucrados de manera directa, ademas de esto los algoritmos evolutivos tambien
+son considerados algoritmos estocasticos debido a la aleatoriedad que conlleva
+utilizar este tipo de algoritmos \cite{Harik1999}.
 
 \section{Multi-agent Systems and Models}
 \label{section:multi-agent-systems-and-models}
