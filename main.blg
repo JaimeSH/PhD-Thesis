@@ -31,45 +31,45 @@ Warning--empty institution in Risi2012
 Warning--empty institution in Harik1999
 Warning--empty booktitle in Calle2019
 Warning--empty institution in Smith2009
-You've used 20 entries,
+You've used 23 entries,
             1876 wiz_defined-function locations,
-            628 strings with 7479 characters,
-and the built_in function-call counts, 4459 in all, are:
-= -- 401
-> -- 223
+            647 strings with 7967 characters,
+and the built_in function-call counts, 5446 in all, are:
+= -- 503
+> -- 253
 < -- 1
-+ -- 83
-- -- 63
-* -- 337
-:= -- 682
-add.period$ -- 22
-call.type$ -- 20
-change.case$ -- 22
++ -- 94
+- -- 71
+* -- 408
+:= -- 809
+add.period$ -- 25
+call.type$ -- 23
+change.case$ -- 25
 chr.to.int$ -- 0
-cite$ -- 28
-duplicate$ -- 214
-empty$ -- 422
-format.name$ -- 63
-if$ -- 1040
+cite$ -- 31
+duplicate$ -- 268
+empty$ -- 519
+format.name$ -- 71
+if$ -- 1284
 int.to.chr$ -- 0
-int.to.str$ -- 20
-missing$ -- 15
-newline$ -- 65
-num.names$ -- 20
-pop$ -- 80
+int.to.str$ -- 23
+missing$ -- 18
+newline$ -- 74
+num.names$ -- 23
+pop$ -- 93
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 118
+skip$ -- 159
 stack$ -- 0
-substring$ -- 208
-swap$ -- 65
+substring$ -- 291
+swap$ -- 88
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
 warning$ -- 8
-while$ -- 41
-width$ -- 22
-write$ -- 174
+while$ -- 53
+width$ -- 25
+write$ -- 204
 (There were 19 warnings)

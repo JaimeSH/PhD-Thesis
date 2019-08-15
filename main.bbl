@@ -24,6 +24,20 @@ E.~Hastings, R.~Guha, and K.~Stanley, ``{Automatic Content Generation in the
   Galactic Arms Race Video Game},'' {\em IEEE Transactions on Computational
   Intelligence and AI in Games}, vol.~1, pp.~245--263, dec 2009.
 
+\bibitem{Browne2010}
+C.~Browne and F.~Maire, ``{Evolutionary Game Design},'' {\em IEEE Transactions
+  on Computational Intelligence and AI in Games}, vol.~2, pp.~1--16, mar 2010.
+
+\bibitem{Togelius2008}
+J.~Togelius and J.~Schmidhuber, ``{An experiment in automatic game design},''
+  in {\em 2008 IEEE Symposium On Computational Intelligence and Games},
+  pp.~111--118, IEEE, dec 2008.
+
+\bibitem{Nielsen2015}
+T.~S. Nielsen, G.~A.~B. Barros, J.~Togelius, and M.~J. Nelson, ``{Towards
+  generating arcade game rules with VGDL},'' in {\em 2015 IEEE Conference on
+  Computational Intelligence and Games (CIG)}, pp.~185--192, IEEE, aug 2015.
+
 \bibitem{Holland1975}
 J.~H. Holland, ``{Adaptation in Natural and Artificial Systems},'' {\em Sgart
   Newsletter}, 1975.

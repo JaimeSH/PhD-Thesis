@@ -270,9 +270,41 @@ seria mediante la facilidad que tienen las mecanicas de ser aprendidas por los
 jugadores.
 
 En cuanto a ejemplos de este tipo de generacion se encuentran algunas
-investigaciones academicas tales como la de Ludi (Ref Ludi num76) otro caso fue
-escrito por Togelius et al. (Ref Togelius num716) mientras que un ultimo caso es
-el de Nielsen et al. (Ref Nielsen num492).
+investigaciones academicas tales como la de Ludi \cite{Browne2010}, Ludi es un
+sistema desarrollado por Cameron Browne y Frederic Maire, este sistema se
+utiliza para evolucionar comandos que definen las reglas de un juego en
+particular a crear, el algoritmo evolutivo se encarga de evolucionar las reglas
+manteniendolas dentro de un cierto rango de metricas que establecen un buen
+patron para juegos de tablero tales como tales como la complejidad del juego o
+la simplicidad de las reglas, un juego de mesa diseñado mendiante el uso de este
+sistema se llama Yavalath, una vista rapida del juego se puede apreciar en la
+figura \ref{figure:Yavalath}, este juego puede tener un minimo de 2 y un maximo
+de 3 jugadores, las reglas son que en base a turnos cada jugador coloca una
+ficha de su color en cualquier punto no ocupado del tablero, el objetivo es
+lograr formar una linea de 4 fichas del mismo color pero la regla es que al
+formar una linea de 3 fichas se pierde el juego de manera automatica, de esta
+manera el juego se basa en forzar jugadas del oponente que permitan que alguno
+tenga mas "control" de los eventos que ocurriran. otro caso fue escrito por
+Togelius et al. \cite{Togelius2008}, este uno de los primeros ejemplos del uso
+de computacion evolutiva para la la generacion de reglas para juegos, en este
+paper se evoluciona un conjunto de reglas de tal manera que un conjunto de
+agentes que participaran en el juego logren tener un mejor entendimiento de como
+funcuina el juego, la manera de evaluar que tan entendibles son las reglas fue a
+travez de varias sesiones simuladas de los agentes, en este caso se procuro
+utilizar reglas sencillas que simularan un juego estilo pac-man en donde los
+agentes deberian de colectar circulos para poder obtener una mejor puntuacion.
+Mientras que un ultimo caso es el de Nielsen et al. \cite{Nielsen2015} esos
+autores programaron un sistema capaz de representar las reglas de un videojuego
+utilizando video game description language en donde juegos estilo 2d se
+representan como mapas en base a caracteres y utilizaron ASP para verificar que
+los niveles podian ser jugados (se podian cumplir las condiciones de victoria).
+
+\begin{figure}
+    \centering
+    \includegraphics[width=1.0\textwidth]{img/Yavalath.png}
+    \caption{Ejemplo de un juego en progreso en el juego de Yavalath}
+    \label{figure:Yavalath}
+\end{figure}
 
 \subsection{Juegos}
 \label{subsection:games}
