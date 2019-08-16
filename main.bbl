@@ -24,6 +24,16 @@ E.~Hastings, R.~Guha, and K.~Stanley, ``{Automatic Content Generation in the
   Galactic Arms Race Video Game},'' {\em IEEE Transactions on Computational
   Intelligence and AI in Games}, vol.~1, pp.~245--263, dec 2009.
 
+\bibitem{mateas2003faccade}
+M.~Mateas and A.~Stern, ``Fa{\c{c}}ade: An experiment in building a
+  fully-realized interactive drama,'' in {\em Game developers conference},
+  vol.~2, pp.~4--8, 2003.
+
+\bibitem{evans2013versu}
+R.~Evans and E.~Short, ``Versu—a simulationist storytelling system,'' {\em
+  IEEE Transactions on Computational Intelligence and AI in Games}, vol.~6,
+  no.~2, pp.~113--130, 2013.
+
 \bibitem{Browne2010}
 C.~Browne and F.~Maire, ``{Evolutionary Game Design},'' {\em IEEE Transactions
   on Computational Intelligence and AI in Games}, vol.~2, pp.~1--16, mar 2010.
@@ -37,6 +47,16 @@ J.~Togelius and J.~Schmidhuber, ``{An experiment in automatic game design},''
 T.~S. Nielsen, G.~A.~B. Barros, J.~Togelius, and M.~J. Nelson, ``{Towards
   generating arcade game rules with VGDL},'' in {\em 2015 IEEE Conference on
   Computational Intelligence and Games (CIG)}, pp.~185--192, IEEE, aug 2015.
+
+\bibitem{treanor2012game}
+M.~Treanor, B.~Blackford, M.~Mateas, and I.~Bogost, ``Game-o-matic: Generating
+  videogames that represent ideas,'' in {\em Proceedings of the The third
+  workshop on Procedural Content Generation in Games}, p.~11, ACM, 2012.
+
+\bibitem{Nelson2008}
+M.~J. Nelson and M.~Mateas, ``{An interactive game-design assistant},'' in {\em
+  Proceedings of the 13th international conference on Intelligent user
+  interfaces - IUI '08}, (New York, New York, USA), p.~90, ACM Press, 2008.
 
 \bibitem{Holland1975}
 J.~H. Holland, ``{Adaptation in Natural and Artificial Systems},'' {\em Sgart

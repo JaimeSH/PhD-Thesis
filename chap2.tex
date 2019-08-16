@@ -234,8 +234,28 @@ aspectos es la generacion de historia que se adapte a las acciones del jugador,
 esto es, que a medida que el jugador progrese en un juego realizando acciones
 especificas el juego adapte la historia a generar deacuerdo a dichas acciones.
 
-Algunos ejemplos de este ambito de generacion se muestran en (Ref Facade), (Ref
-Versu) y (Ref Blood y Laurels)
+Algunos ejemplos de este ambito de generacion se muestran en el juego
+\textit{Facade} y el sistema \textit{Versu}, el primero que se explicara es el
+juego de Facade, Facade es un juego desarrollado por Michael Mateas y Andrew
+Stern \cite{mateas2003faccade} que intenta crear un juego estilo novela visual
+en donde las acciones de el jugadro tengan influencia en los eventos que ocurren
+en el juego, el juego introduce al personaje del jugador como un amigo de una
+pareja de casados, no se cuenta con un objetivo especifico mas que el de
+completar la historia, sin embargo el juego provee de acciones y respuestas que
+el personaje puede expresar a la pareja, estas mismas tienen influenciaran
+directamente el como se desarrollara la historia, el juego se diseño con el
+proposito de que el jugador lo repita multiples veces con el fin de descubrir
+como las diferentes decisiones cambiaran el desenlace de la historia. 
+
+Finalmente \textit{Versu} es una aplicacion desarrollado por Richard Evans y
+Emily Short \cite{evans2013versu} es juego se encarga de generar simulaciones en
+base a lineas de texto que denotan acciones que un conjunto de personajes no
+jugables (NPC) realizan en determinados escenarios, el juego permite que a una
+persona se le asigne un personaje del juego y controle las acciones que
+realizara, mientras que los NPC restantes responderan de manera autonoma
+mientras el juego continua, este sistema de generacion de narrativa inicio como
+un proyecto academico y despues paso a ser utilizado de manera comercial ademas
+de ser la base para el desarrollo de otros juegos de estilo similar.
 
 \subsection{Reglas y Mecanicas}
 \label{subsection:rulesandmechanics}
@@ -284,16 +304,19 @@ ficha de su color en cualquier punto no ocupado del tablero, el objetivo es
 lograr formar una linea de 4 fichas del mismo color pero la regla es que al
 formar una linea de 3 fichas se pierde el juego de manera automatica, de esta
 manera el juego se basa en forzar jugadas del oponente que permitan que alguno
-tenga mas "control" de los eventos que ocurriran. otro caso fue escrito por
-Togelius et al. \cite{Togelius2008}, este uno de los primeros ejemplos del uso
-de computacion evolutiva para la la generacion de reglas para juegos, en este
-paper se evoluciona un conjunto de reglas de tal manera que un conjunto de
-agentes que participaran en el juego logren tener un mejor entendimiento de como
-funcuina el juego, la manera de evaluar que tan entendibles son las reglas fue a
-travez de varias sesiones simuladas de los agentes, en este caso se procuro
-utilizar reglas sencillas que simularan un juego estilo pac-man en donde los
-agentes deberian de colectar circulos para poder obtener una mejor puntuacion.
-Mientras que un ultimo caso es el de Nielsen et al. \cite{Nielsen2015} esos
+tenga mas "control" de los eventos que ocurriran. 
+
+Un segundo caso fue escrito por Togelius et al. \cite{Togelius2008}, este uno de
+los primeros ejemplos del uso de computacion evolutiva para la la generacion de
+reglas para juegos, en este paper se evoluciona un conjunto de reglas de tal
+manera que un conjunto de agentes que participaran en el juego logren tener un
+mejor entendimiento de como funcuina el juego, la manera de evaluar que tan
+entendibles son las reglas fue a travez de varias sesiones simuladas de los
+agentes, en este caso se procuro utilizar reglas sencillas que simularan un
+juego estilo pac-man en donde los agentes deberian de colectar circulos para
+poder obtener una mejor puntuacion.
+
+Finalmente un ultimo caso es el de Nielsen et al. \cite{Nielsen2015} esos
 autores programaron un sistema capaz de representar las reglas de un videojuego
 utilizando video game description language en donde juegos estilo 2d se
 representan como mapas en base a caracteres y utilizaron ASP para verificar que
@@ -301,7 +324,7 @@ los niveles podian ser jugados (se podian cumplir las condiciones de victoria).
 
 \begin{figure}
     \centering
-    \includegraphics[width=1.0\textwidth]{img/Yavalath.png}
+    \includegraphics[width=0.6\textwidth]{img/Yavalath.png}
     \caption{Ejemplo de un juego en progreso en el juego de Yavalath}
     \label{figure:Yavalath}
 \end{figure}
@@ -325,9 +348,38 @@ aspecto del sonido el aleteo o movimiento generado por dichas alas al estar
 volando puede tener un sonido unico para identificarlo.
 
 Para este caso existen diferentes maneras de intentar generar juegos nuevos, tal
-es el caso de Game-O-Matic (Ref Game-o-matic num723), otra investigacion realizada
-por Nelson et al. (Ref Nelson num484), finalmente uno de los mejores generadores
-de juegos lleva en nombre de ANGELINA (Ref ANGELINA num135-137).
+es el caso de Game-O-Matic \cite{treanor2012game}, Game-O-Matic es una
+herramienta de generacion enfocada a la generacion de juegos que representan
+ideas, en este sistema se utiliza un sistema de sustantivos unidos mediante
+verbos que son ingresados al sistema como datos de entrada, estos datos son
+procesados y se logra generar un juego simple estilo arcade que logre
+representar un mapa conceptual generado mediante los valores de entrada. 
+
+Otra investigacion realizada por Nelson et al. \cite{Nelson2008}, para este
+sistema los autores proponen un sistema parecido al de Game-O-Matic explicado
+anteriormente, sin embargo en este caso el sistema esta basado en sprites que
+representan entidades del juego, lo que se asigna como valor de entrada es
+restricciones que definen la interaccion de los spites en pantalla, las
+restricciones son procesadas mediante una red semantica y una base de datos de
+lexico, este proceso logra generar juegos que cumplan las restricciones
+estipuladas, en este caso los juegos generados tienen mecanicas estilo WarioWare
+en donde los juegos tienen una regla de victoria sencilla que hace los juegos
+relativamente cortos. 
+
+Finalmente uno de los mejores generadores de juegos lleva en nombre de ANGELINA
+(Ref ANGELINA num135-137) \footnote{Deacuerdo al autor: "A Novel Game-Evolving
+Labbrat I've Named ANGELINA"}, ANGELINA es un sistema de generacion de juegos
+diseñado originalmente en 2011 y que ah recibido modificaciones desde entonces,
+la base del generador es el uso de un sistema evolutivo que se encarga de
+evolucionar las reglas, los terrenos, los personajes y demas conjuntos con
+respecto unos de otros de una manera orquestrada, se encarga no solo de
+evolucionar la informacion visual de los componentes sino tambien de asignar sus
+locaciones en un campo de trabajo que representa un juego, ademas de esto es
+capaz de seleccionar elementos musicales relevantes al tema de los mapas
+generados o de la faceta emocional presente en el juego ademas de crear
+asignarle un nombre a los juegos que logra crear, inicialmente el sistema era
+capaz de generar niveles de plataforma en 2-D pero actualmente es capaz de
+generar niveles de tematica de aventura en entornos 3-D.
 
 Los anteriores generadores a pesar de no ser perfectos han permitido dar un gran
 paso en la generacion de contenido o mas bien en la generacion de juegos, sin
