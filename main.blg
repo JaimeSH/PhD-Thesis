@@ -12,12 +12,6 @@ A level-1 auxiliary file: biblio.aux
 The style file: ieeetr.bst
 A level-1 auxiliary file: appa.aux
 Database file #1: main.bib
-Warning--I didn't find a database entry for "Huang2009"
-Warning--I didn't find a database entry for "Lu2009"
-Warning--I didn't find a database entry for "Avramov2006"
-Warning--I didn't find a database entry for "Garcia-Almanza2006"
-Warning--I didn't find a database entry for "Cai2013"
-Warning--I didn't find a database entry for "Shoham1993"
 Warning--I didn't find a database entry for "Hernandez-Aguila2017"
 Warning--I didn't find a database entry for "Atanassov1986"
 Warning--I didn't find a database entry for "Hancock2012"
@@ -29,47 +23,49 @@ Warning--empty institution in Holtar
 Warning--empty year in Holtar
 Warning--empty institution in Risi2012
 Warning--empty institution in Harik1999
+Warning--empty year in garner2014sonic
+Warning--empty year in cook2011multi
 Warning--empty booktitle in Calle2019
 Warning--empty institution in Smith2009
-You've used 27 entries,
+You've used 32 entries,
             1876 wiz_defined-function locations,
-            671 strings with 8630 characters,
-and the built_in function-call counts, 6547 in all, are:
-= -- 609
-> -- 291
+            688 strings with 9871 characters,
+and the built_in function-call counts, 8298 in all, are:
+= -- 753
+> -- 406
 < -- 1
-+ -- 108
-- -- 81
-* -- 483
-:= -- 957
-add.period$ -- 29
-call.type$ -- 27
-change.case$ -- 29
++ -- 148
+- -- 116
+* -- 627
+:= -- 1213
+add.period$ -- 34
+call.type$ -- 32
+change.case$ -- 34
 chr.to.int$ -- 0
-cite$ -- 35
-duplicate$ -- 335
-empty$ -- 634
-format.name$ -- 81
-if$ -- 1561
+cite$ -- 42
+duplicate$ -- 421
+empty$ -- 781
+format.name$ -- 116
+if$ -- 1968
 int.to.chr$ -- 0
-int.to.str$ -- 27
-missing$ -- 22
-newline$ -- 86
-num.names$ -- 27
-pop$ -- 113
+int.to.str$ -- 32
+missing$ -- 27
+newline$ -- 101
+num.names$ -- 32
+pop$ -- 139
 preamble$ -- 1
 purify$ -- 0
 quote$ -- 0
-skip$ -- 202
+skip$ -- 261
 stack$ -- 0
-substring$ -- 347
-swap$ -- 112
+substring$ -- 449
+swap$ -- 147
 text.length$ -- 1
 text.prefix$ -- 0
 top$ -- 0
 type$ -- 0
-warning$ -- 8
-while$ -- 65
-width$ -- 29
-write$ -- 246
-(There were 19 warnings)
+warning$ -- 10
+while$ -- 80
+width$ -- 34
+write$ -- 292
+(There were 15 warnings)

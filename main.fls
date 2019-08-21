@@ -360,10 +360,13 @@ INPUT d:/Program Files/texlive/2018/texmf-dist/tex/latex/lm/omslmr.fd
 OUTPUT d:/Documents/GitHub Projects/Master-Thesis/chap2.aux
 INPUT d:/Documents/GitHub Projects/Master-Thesis/chap2.tex
 INPUT d:/Documents/GitHub Projects/Master-Thesis/chap2.tex
-INPUT d:/Documents/GitHub Projects/Master-Thesis/img/pcg_areas.png
-INPUT d:/Documents/GitHub Projects/Master-Thesis/img/pcg_areas.png
-INPUT d:/Documents/GitHub Projects/Master-Thesis/img/pcg_areas.png
+INPUT d:/Documents/GitHub Projects/Master-Thesis/img/ga_life_cycle.png
+INPUT d:/Documents/GitHub Projects/Master-Thesis/img/ga_life_cycle.png
+INPUT d:/Documents/GitHub Projects/Master-Thesis/img/ga_life_cycle.png
 INPUT d:/Program Files/texlive/2018/texmf-dist/fonts/tfm/public/lm/ec-lmri12.tfm
+INPUT d:/Documents/GitHub Projects/Master-Thesis/img/pcg_areas.png
+INPUT d:/Documents/GitHub Projects/Master-Thesis/img/pcg_areas.png
+INPUT d:/Documents/GitHub Projects/Master-Thesis/img/pcg_areas.png
 INPUT d:/Documents/GitHub Projects/Master-Thesis/img/DisgaeaIW.png
 INPUT d:/Documents/GitHub Projects/Master-Thesis/img/DisgaeaIW.png
 INPUT d:/Documents/GitHub Projects/Master-Thesis/img/DisgaeaIW.png
@@ -390,6 +393,9 @@ INPUT d:/Program Files/texlive/2018/texmf-dist/fonts/tfm/public/cm/cmbsy10.tfm
 INPUT d:/Program Files/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy7.tfm
 INPUT d:/Program Files/texlive/2018/texmf-dist/fonts/tfm/public/amsfonts/cmextra/cmbsy5.tfm
 INPUT d:/Program Files/texlive/2018/texmf-dist/fonts/tfm/public/lm/ec-lmr7.tfm
+INPUT d:/Documents/GitHub Projects/Master-Thesis/img/playabilityv2.png
+INPUT d:/Documents/GitHub Projects/Master-Thesis/img/playabilityv2.png
+INPUT d:/Documents/GitHub Projects/Master-Thesis/img/playabilityv2.png
 OUTPUT d:/Documents/GitHub Projects/Master-Thesis/chap3.aux
 INPUT d:/Documents/GitHub Projects/Master-Thesis/chap3.tex
 INPUT d:/Documents/GitHub Projects/Master-Thesis/chap3.tex

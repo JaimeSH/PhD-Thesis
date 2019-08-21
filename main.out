@@ -1,7 +1,7 @@
 \BOOKMARK [0][-]{chapter.1}{Introduction}{}% 1
 \BOOKMARK [1][-]{section.1.1}{Justificacion}{chapter.1}% 2
 \BOOKMARK [0][-]{chapter.2}{Preliminaries}{}% 3
-\BOOKMARK [1][-]{section.2.1}{Algoritmos gen\351ticos}{chapter.2}% 4
+\BOOKMARK [1][-]{section.2.1}{Algoritmos Geneticos}{chapter.2}% 4
 \BOOKMARK [1][-]{section.2.2}{Generaci\363n procedural de contenido}{chapter.2}% 5
 \BOOKMARK [2][-]{subsection.2.2.1}{PCG en el \341mbito de videojuegos}{section.2.2}% 6
 \BOOKMARK [2][-]{subsection.2.2.2}{\301reas de inter\351s de generaci\363n procedural}{section.2.2}% 7
@@ -10,8 +10,8 @@
 \BOOKMARK [2][-]{subsection.2.2.5}{Narrativa}{section.2.2}% 10
 \BOOKMARK [2][-]{subsection.2.2.6}{Reglas y Mecanicas}{section.2.2}% 11
 \BOOKMARK [2][-]{subsection.2.2.7}{Juegos}{section.2.2}% 12
-\BOOKMARK [1][-]{section.2.3}{Algoritmos Geneticos}{chapter.2}% 13
-\BOOKMARK [1][-]{section.2.4}{Multi-agent Systems and Models}{chapter.2}% 14
+\BOOKMARK [1][-]{section.2.3}{Jugabilidad}{chapter.2}% 13
+\BOOKMARK [1][-]{section.2.4}{Open-Ended Evolution}{chapter.2}% 14
 \BOOKMARK [0][-]{chapter.3}{Estado del arte}{}% 15
 \BOOKMARK [1][-]{section.3.1}{Competencia IEEE CoG}{chapter.3}% 16
 \BOOKMARK [1][-]{section.3.2}{Algoritmos de busqueda}{chapter.3}% 17
@@ -36,16 +36,16 @@
 \BOOKMARK [2][-]{subsection.5.4.5}{Evolutionary Process}{section.5.4}% 36
 \BOOKMARK [0][-]{appendix.A}{}{}% 37
 \BOOKMARK [1][-]{section.A.1}{Market Interpretations}{appendix.A}% 38
-\BOOKMARK [2][-]{section*.24}{AUD/USD 10 Agents, 10 Rules, 10 Individuals}{section.A.1}% 39
-\BOOKMARK [2][-]{section*.27}{AUD/USD 20 Agents, 20 Rules, 20 Individuals}{section.A.1}% 40
-\BOOKMARK [2][-]{section*.30}{EUR/GBP 10 Agents, 10 Rules, 10 Individuals}{section.A.1}% 41
-\BOOKMARK [2][-]{section*.33}{EUR/GBP 20 Agents, 20 Rules, 20 Individuals}{section.A.1}% 42
-\BOOKMARK [2][-]{section*.36}{EUR/USD 4 Agents, 4 Rules, 4 Individuals}{section.A.1}% 43
-\BOOKMARK [2][-]{section*.39}{EUR/USD 10 Agents, 10 Rules, 10 Individuals}{section.A.1}% 44
-\BOOKMARK [2][-]{section*.42}{EUR/USD 20 Agents, 20 Rules, 20 Individuals}{section.A.1}% 45
-\BOOKMARK [2][-]{section*.45}{GBP/USD 4 Agents, 4 Rules, 4 Individuals}{section.A.1}% 46
-\BOOKMARK [2][-]{section*.48}{GBP/USD 10 Agents, 10 Rules, 10 Individuals}{section.A.1}% 47
-\BOOKMARK [2][-]{section*.51}{GBP/USD 20 Agents, 20 Rules, 20 Individuals}{section.A.1}% 48
-\BOOKMARK [2][-]{section*.54}{USD/CAD 4 Agents, 4 Rules, 4 Individuals}{section.A.1}% 49
-\BOOKMARK [2][-]{section*.57}{USD/CAD 10 Agents, 10 Rules, 10 Individuals}{section.A.1}% 50
-\BOOKMARK [2][-]{section*.60}{USD/CAD 20 Agents, 20 Rules, 20 Individuals}{section.A.1}% 51
+\BOOKMARK [2][-]{section*.26}{AUD/USD 10 Agents, 10 Rules, 10 Individuals}{section.A.1}% 39
+\BOOKMARK [2][-]{section*.29}{AUD/USD 20 Agents, 20 Rules, 20 Individuals}{section.A.1}% 40
+\BOOKMARK [2][-]{section*.32}{EUR/GBP 10 Agents, 10 Rules, 10 Individuals}{section.A.1}% 41
+\BOOKMARK [2][-]{section*.35}{EUR/GBP 20 Agents, 20 Rules, 20 Individuals}{section.A.1}% 42
+\BOOKMARK [2][-]{section*.38}{EUR/USD 4 Agents, 4 Rules, 4 Individuals}{section.A.1}% 43
+\BOOKMARK [2][-]{section*.41}{EUR/USD 10 Agents, 10 Rules, 10 Individuals}{section.A.1}% 44
+\BOOKMARK [2][-]{section*.44}{EUR/USD 20 Agents, 20 Rules, 20 Individuals}{section.A.1}% 45
+\BOOKMARK [2][-]{section*.47}{GBP/USD 4 Agents, 4 Rules, 4 Individuals}{section.A.1}% 46
+\BOOKMARK [2][-]{section*.50}{GBP/USD 10 Agents, 10 Rules, 10 Individuals}{section.A.1}% 47
+\BOOKMARK [2][-]{section*.53}{GBP/USD 20 Agents, 20 Rules, 20 Individuals}{section.A.1}% 48
+\BOOKMARK [2][-]{section*.56}{USD/CAD 4 Agents, 4 Rules, 4 Individuals}{section.A.1}% 49
+\BOOKMARK [2][-]{section*.59}{USD/CAD 10 Agents, 10 Rules, 10 Individuals}{section.A.1}% 50
+\BOOKMARK [2][-]{section*.62}{USD/CAD 20 Agents, 20 Rules, 20 Individuals}{section.A.1}% 51
