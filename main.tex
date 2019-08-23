@@ -51,6 +51,11 @@
 \usepackage{ifxetex}
 \usepackage{tikz}
 
+%For code Highlight
+\usepackage[utf8]{inputenc}
+\usepackage[english]{babel}
+\usepackage{minted}
+
 \usepackage{}
 
 %\usepackage[a4paper,margin=1cm,landscape]{geometry}
@@ -103,25 +108,39 @@
 \usepackage{etoolbox}
 \patchcmd{\chapter}{plain}{fancy}{}{}
 
-%\usepackage{fontspec}
-%\setmainfont{Times New Roman}
-%\setmainfont{Arial}
+% For list caption
 
+\renewcommand{\lstlistingname}{Codigo}% Listing -> Codigo
+\renewcommand{\lstlistlistingname}{Índice de \lstlistingname s}
 
-%\usepackage[T1,T2A]{fontenc}
-%\usepackage[latin1]{inputenc}
-%\usepackage[spanish]{babel}
+\addto\captionsenglish{
+   \renewcommand\listfigurename{Índice de Figuras}}
 
-%\selectlanguage{spanish}
+\addto\captionsenglish{
+  \renewcommand\figurename{Fig}
+}
 
-%\pagestyle{plain}
- 
-%% This bit allows you to either specify only the files which you wish to
-%% process, or `all' to process all files which you \include.
-%% Krishna Sethuraman (1990).
+\addto\captionsenglish{
+  \renewcommand\contentsname{Índice general}
+}
 
-% \typein [\files]{Enter file names to process, (chap1,chap2 ...), or
-%  `all' to process all files:}
+\AtBeginDocument{%
+  \renewcommand{\lstlistingname}{Codigo}
+}
+
+\addto\captionsenglish{%
+  \renewcommand{\lstlistingname}{Codigo}
+}
+
+\addto\captionsenglish{\renewcommand{\chaptername}{Capitulo}}
+
+\renewcommand{\chaptername}{Capitulo}
+
+\renewcommand{\listingscaption}{Codigo}
+%\addto\captionsenglish{
+%  \renewcommand\
+%}
+
 \def\all{all}
 % \ifx\files\all \typeout{Including all files.} \else \typeout{Including only \files.} \includeonly{\files} \fi
 

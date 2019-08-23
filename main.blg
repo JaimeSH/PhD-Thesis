@@ -12,11 +12,6 @@ A level-1 auxiliary file: biblio.aux
 The style file: ieeetr.bst
 A level-1 auxiliary file: appa.aux
 Database file #1: main.bib
-Warning--I didn't find a database entry for "Hernandez-Aguila2017"
-Warning--I didn't find a database entry for "Atanassov1986"
-Warning--I didn't find a database entry for "Hancock2012"
-Warning--I didn't find a database entry for "JinghuiZhong2006"
-Warning--I didn't find a database entry for "sivanandam2007introduction"
 Warning--empty institution in Mateas
 Warning--empty year in Mateas
 Warning--empty institution in Holtar
@@ -29,7 +24,7 @@ Warning--empty booktitle in Calle2019
 Warning--empty institution in Smith2009
 You've used 32 entries,
             1876 wiz_defined-function locations,
-            688 strings with 9871 characters,
+            679 strings with 9725 characters,
 and the built_in function-call counts, 8298 in all, are:
 = -- 753
 > -- 406
@@ -68,4 +63,4 @@ warning$ -- 10
 while$ -- 80
 width$ -- 34
 write$ -- 292
-(There were 15 warnings)
+(There were 10 warnings)
