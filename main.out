@@ -30,6 +30,7 @@
 \BOOKMARK [1][-]{section.5.2}{Creacion de compuestos}{chapter.5}% 30
 \BOOKMARK [1][-]{section.5.3}{Definicion de clase auxiliar de individuo}{chapter.5}% 31
 \BOOKMARK [1][-]{section.5.4}{Generacion de individuos}{chapter.5}% 32
-\BOOKMARK [0][-]{appendix.A}{}{}% 33
-\BOOKMARK [1][-]{section.A.1}{Codigo del sitema}{appendix.A}% 34
-\BOOKMARK [2][-]{section*.23}{Codigo principal}{section.A.1}% 35
+\BOOKMARK [2][-]{subsection.5.4.1}{Integracion de miembros elite}{section.5.4}% 33
+\BOOKMARK [0][-]{appendix.A}{}{}% 34
+\BOOKMARK [1][-]{section.A.1}{Codigo del sitema}{appendix.A}% 35
+\BOOKMARK [2][-]{section*.23}{Codigo principal}{section.A.1}% 36

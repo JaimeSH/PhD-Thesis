@@ -56,7 +56,7 @@
 \usepackage[english]{babel}
 \usepackage{minted}
 
-\usepackage{}
+\usepackage{lipsum}
 
 %\usepackage[a4paper,margin=1cm,landscape]{geometry}
 \usetikzlibrary{positioning,shapes,shadows,arrows}
@@ -143,6 +143,22 @@
 
 \def\all{all}
 % \ifx\files\all \typeout{Including all files.} \else \typeout{Including only \files.} \includeonly{\files} \fi
+
+\usepackage[most]{tcolorbox}
+\newtcblisting{Heardlisting}[2][]{%
+empty,
+boxsep=0pt,left=0pt,right=0pt,boxrule=2pt,leftrule=0pt,rightrule=0pt,
+lefthand width=.4\linewidth,
+segmentation engine=path,
+segmentation style={solid,line width=1pt},
+comment side listing,
+fontupper=\itshape\sffamily,
+listing options={% put any listing options here
+    language={Haskell},
+    aboveskip=0pt, belowskip=0pt,
+    basicstyle=\ttfamily,columns=fullflexible},
+comment={#2},#1
+}
 
 \begin{document}
 

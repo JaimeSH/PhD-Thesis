@@ -165,6 +165,10 @@ particular en el individuo es posible hacerlo desde la clase de
 \textit{individuo}, de igual manera esta clase tiene como funciones principales
 como se muestran en el diagrama de clase de la figura
 \ref{figure:individual-class-diagram} realizar los calculos de fitness y generar
+las listas de piezas que seran utilizadas para generar los archivos de salida
+necesarios para las simulaciones de los niveles generados.
+
+
 
 \section{Generacion de individuos}
 \label{section:ind_generation}
@@ -198,7 +202,7 @@ el caso de las pruebas realizadas se utilizo un totoal de 10 individuos lo que
 significa que la lista \textit{pop} generada consta de 10 instancias diferentes
 de la clase \textit{Individual}. 
 
-Para la genracion de la lista de piezas o cromosomas asignados a un individuo
+Para la generacion de la lista de piezas o cromosomas asignados a un individuo
 mostrada en la parte (1) del codigo en \ref{code:get_random_chrom}, aqui el
 valor que se recive denota la cantidad de piezas o compuestos que se deberan de
 asignar en la lista para el individuo, para asignar estos valores primero se
@@ -247,3 +251,78 @@ cumpla entonces la lista se regresa para la creacion de la instancia de clase.
   \caption{Codigo de asignacion de cromosomas(piezas)[1] y codigo para generar mascaras [2]}
   \label{code:get_random_chrom}
 \end{listing}
+
+Una vez que se ah logrado cear la lista de individuos se procede a inicializar
+el algoritmo evolutivo, este algoritmo se ejecutara una determinada cantidad de
+veces que se haya establecido en el codigo, el pseudo-codigo ah ejecutar con su
+respectiva implementacion en codigo se enlista a continuacion en el codigo
+\ref{code:algorithm_pseudocode}, este pseudocodigo engloba los aspectos
+principales del sistema de generacion de niveles, el codigo se explica mas a
+detalle en las secciones siguientes.
+
+\begin{listing}[ht]
+  \scalebox{.8}{\input{extras/testpseudo.tex}}
+  \caption{Pseudo-codigo del algoritmo genetico}
+  \label{code:algorithm_pseudocode}
+\end{listing}
+
+\subsection{Integracion de miembros elite}
+\label{subsection:elite_member_integration}
+
+Esta parte se encarga de iniciar los bucles de generacion, la funcion principal
+de este broque de codigo es la revisar la lista auxiliar de miembros de elite
+que existe en memoria, en caso de tener elementos en la lista estos se integran
+a la lista de la poblacion integrandose al inicio de la misma, una vez agregados
+todos los miembros la lista de la poblacion se corta hasta el numero maximo de
+miembros permitidos en las generaciones, este valor se asigna como un valor de
+entrada al inicio del archivo que contiene el codigo.
+
+Una vez terminada esta accion se procede a denotar la cantidad de padres que
+seran necesarios para generar los hijos de las generaciones futuras, esto se
+hace mediante el calculo:
+\begin{minted}{python}
+  many = len(pop) * per_cross
+\end{minted}
+En donde \textit{pop} representa la lista de miembros de la poblacion,
+\textit{per\_cross} representa un valor entre \textit{0\.0} y \textit{1\.0}, este
+valor representa que tanto porcentaje de la poblacion se quiere realice cruces,
+de esta manera la variable \textit{many} representa la cantidad de individuos
+que se deberan de utilizar para cumplir el porcentaje de cruce, debido a que el
+valor de \textit{per\_cross} puede generar un valor flotante se tiene una parte
+de codigo en donde si el total de individuos que realizaran cruces es un numero
+inpar entonces el valor que se debera de utilizar sera el numero par redondeado
+hacia abajo, es decir, si de 10 individuos en la poblacion se quiere que un
+total de individuos cercano al \textit{50\%} realizen un cruce entonces el valor
+resultante para la variable \textit{many} seria de 5, en este caso lo que se
+hace es restar 1 al resultado y despues se redondea hacia abajo, lo cual haria
+que el numero de padres requeridos para los cruces sea de 4.
+
+Una vez que se tiene el valor de los padres requeridos para los crces de la
+generacion se procede a crear los archivos auxiliares de los individuos de la
+poblacion, los archivos generados son en formato \textit{XML}, la informacion
+que contienen estos archivos es la posicion, tipo y material de ls piezas que
+seran utilizadas en el nivel, ademas de esto tambien contiene la informacion de
+la cantidad y tipo de aves asi como de los enemigos que seran colocados, estos
+archivos son almacenados en un folder en donde el software de simulacion se
+encarga de obtenerlos y entregar los resultados despues de la simulacion.
+
+Una vez que los archivos de simulacion han sido generados el algoritmo manda un
+comando que manda la ejecucion del software de simulacion, el software en
+particular cuenta con una ventan grafica en la que se puede apreciar los niveles
+que se generaron o envolucionaron an caso de estar simulando archivos de una
+generacion despues de la primera, de igual manera el software genera un archivo
+en formato \textit{XML} similar al que se genera antes de la simulacion, la
+diferencia entre ambos archivos es que el que es entregado despues de la
+simulacion entrega los datos de posicion del ultimo estado registrado del nivel,
+ademas de que se puede solicitar que entregue el valor de la aceleracion de la
+misma, el valor de aceleracion es tomado en cuenta desde el punto en el que la
+pieza comienza su descenso, en caso de que una pieza sea destruida durante el
+proceso de simulacion ninguno de los datos de esa pieza son grabados en los
+archivos, la manera de llevar control de las piezas que entran y las que salen
+es mediante el uso de un numero de lista asignado al momento de generar los
+archivos de simulacion de la seccion anterior.
+
+Posterior a la simulacion los archivos entregados son revisados y en base la
+informacion de las piezas se calcula el \textit{Fitness} de las mismas,
+posterioremente a esto se procede a ordenar la lista, y realizar las operaciones
+de seleccion, cruce, mutacion
