@@ -31,6 +31,9 @@
 \BOOKMARK [1][-]{section.5.3}{Definicion de clase auxiliar de individuo}{chapter.5}% 31
 \BOOKMARK [1][-]{section.5.4}{Generacion de individuos}{chapter.5}% 32
 \BOOKMARK [2][-]{subsection.5.4.1}{Integracion de miembros elite}{section.5.4}% 33
-\BOOKMARK [0][-]{appendix.A}{}{}% 34
-\BOOKMARK [1][-]{section.A.1}{Codigo del sitema}{appendix.A}% 35
-\BOOKMARK [2][-]{section*.23}{Codigo principal}{section.A.1}% 36
+\BOOKMARK [2][-]{subsection.5.4.2}{Operador de seleccion}{section.5.4}% 34
+\BOOKMARK [2][-]{subsection.5.4.3}{Operador de cruce}{section.5.4}% 35
+\BOOKMARK [2][-]{subsection.5.4.4}{Operador de mutacion}{section.5.4}% 36
+\BOOKMARK [0][-]{appendix.A}{}{}% 37
+\BOOKMARK [1][-]{section.A.1}{Codigo del sitema}{appendix.A}% 38
+\BOOKMARK [2][-]{section*.26}{Codigo principal}{section.A.1}% 39

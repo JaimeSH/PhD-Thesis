@@ -325,4 +325,134 @@ archivos de simulacion de la seccion anterior.
 Posterior a la simulacion los archivos entregados son revisados y en base la
 informacion de las piezas se calcula el \textit{Fitness} de las mismas,
 posterioremente a esto se procede a ordenar la lista, y realizar las operaciones
-de seleccion, cruce, mutacion
+de seleccion, cruce, mutacion los cuales se explican en la seccion siguiente.
+
+\subsection{Operador de seleccion}
+\label{subsection:sel_operator}
+
+El proceso de seleccion se definio de dos maneras diferentes, la primer es
+mediante el uso de una ruleta para las seleccion, en esta ruleta los valores que
+se toman en cuenta es el fitness de cada individuo, mientras mas alto sea el
+fitness mayor sera la probabilidad de ser seleccionado para el cruce en la
+siguiente seccion.
+
+El segundo metodo utilizado es la seleccion mediante torneo, en este tipo de
+seleccion lo que se realiza es que los individuos se seleccionan en pares de
+manera aleatoria, entre cada par se realiza un calculo de cual tiene el mejor
+fitness y ese individuo es seleccionado como padre para la generacion.
+
+\subsection{Operador de cruce}
+\label{subsection:crossover_operator}
+
+Para los operadores de cruce se tienen codificados dos tipos, cruce de un punto
+y cruce de dos puntos, este operados de cruce se realiza no solo en elos
+individuos de la poblacion sino tambien en las mascaras que tienen los mismos
+individuos, esto es para aumentar un grado mas el nivel de diversidad que se
+puede tener en los individuos generados, la idea en este caso es lograr que
+existan casos en donde la mascara sea muy chica y varias piezas de los
+individuos no sean mostradas y el caso contrario permitira que un individuos
+pueda o no quedar con el mismo caso y puede que se de el caso en donde alguno de
+ambos elementos logre obtener un mejor nivel de fitness en la generacion.
+
+Un ejemplo de estos dos tipos de cruce se puede apreciar en la figura
+\ref{figure:crossover} en donde dos individuos realizan un cruce con sus
+mascaras y las mascaras generadas para los hijos resultan con diferente cantidad
+de piezas.
+
+La manera en como se aplican estsos tipos de operador es:
+\begin{enumerate}
+  \item Definir un punto de corte igual para los dos individuos en cualquier
+  posicion de la lista de genotipos.
+  \item Separar las dos partes cortadas de ambos individuos de tal manera que se
+  tenga la parte de inicio (del inicio hasta el corte) y la parte final (desde
+  el corte hasta el final) de cada individuo.
+  \item Para crear al primer hijo tomar la parte inicial del primer individuo y
+  unirla con la parte final del segundo individuo
+  \item Para el segundo hijo tomar la parte inicial del segundo individuo y
+  unirla con la parte final del primer individuo.
+\end{enumerate}
+De esta manera los hijos se pueden comprender de la siguiente manera:
+\begin{minted}{python}
+  padre1 = padre[1, punto_corte]
+  padre2 = padre[punto_corte, fin]
+
+  madre1 = madre[1, punto_corte]
+  madre2 = madre[punto_corte, fin]
+
+  hijo1 = padre1 + madre2
+  hijo2 = madre1 + padre2
+\end{minted}
+Para el caso del cruce de dos puntos la manera en como se realiza es que en vez
+de dividir el genotipo de un individuo en dos partes se divide en tres y al
+momento de realizar la combinacion se toma la primer parte del primer individuo,
+despues la parte de enmedio del segundo individuo y finalmente la parte final
+del primero, de tal fomra que solo la parte central de ambos individuos se
+cambia.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\textwidth]{img/crossover.png}
+  \caption{Cruce de un punto (arriba) y cruce a dos puntos (abajo) aplicada a la mascara de individuos}
+  \label{figure:crossover}
+\end{figure}
+
+\subsection{Operador de mutacion}
+\label{subsection:mutation_operator}
+
+La mutacion de los individuos de la poblacion ocurre solo al momento de hacer el
+cruce de los mismos, es decir solo a los elementos nuevos se les aplica el
+operador de mutacion, este operador puede modificar los siguientes elementos de
+un individuo:
+\begin{enumerate}
+  \item La cantidad de piezas que conforman al individuo.
+  \item El material del cual estan formados los elementos.
+  \item El tipo de elemento que conforma a un individuo, es decir, modificar el
+  valor del compuesto que forma parte del individuo.
+  \item La posicion individual (\textit{x} o \textit{y}) de los compuestos.
+\end{enumerate}
+
+La manera en como se aplica el operador de mutacion se describe como sigue,
+primeo al momento de generar al nuevo individuo se realiza un calculo de
+porcentaje en donde se decide si tendra o no mutacion dependiendo del procentaje
+de mutacion que se haya asignado al inicio del algoritmo, posteriormente en caso
+de que el valor de porcentaje quede dentro del rango se toma para las
+operaciones, esta mismas se explican de la manera siguiente.
+
+Para mutar la cantida de compuestos en un individuo primero se realiza una
+seleccion aleatoria entre las opciones de agregar o quitar compuestos,
+posteriormente en caso de requerir agregar mas se realiza una seleccion
+aleatoria de entre la cantidad de compuestos creados, estos mismos se integran
+al final de la lista de compuestos del individuo. Para eliminar elementos de la
+lista se realiza una corrida por todos los elementos y en cada uno se realiza
+una probabilida de \textit{50\%} de sea borrado de la lista, un ejemplo de este
+proceso se muestra en la figura \ref{figure:mutate_add_remove} en donde se
+presenta una tabla que denota las posiciones de los compuestos en base a la
+mascara, en este ejemplo se realizo una corrida para remover elementos (color
+rojo) y una segunda para agregar nuevos compuestos (color verde).
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.8\textwidth]{img/mutation_add_remove.png}
+  \caption{Ejemplo del operador de mutacion enfocado a remover y agregar compuestos}
+  \label{figure:mutate_add_remove}
+\end{figure}
+
+La segunda mutacion se encarga de modificar el material del que estan
+conformados los compuestos del individuo, la manera en como trabaja este proceso
+es primero se selecciona aleatoriamente cuales compuestos seran modificados sin
+repetir valores, posterioremente se modifica de manera aleatoria el valor que
+define el tipo de material del que se conforma, para esto se toma en cuenta que
+\textit{0} representa material de madera, \textit{1} representa material de
+hielo y finalmente \textit{2} representa el material de piedra, debido a que el
+juego solo acepta esta lista de compuestos no es posible asignar valores
+diferentes a estos.
+
+En la figura \ref{figure:mutate_composite} se muestra un ejemplo de la manera en
+como opera la mutacion del tipo de compuesto, en este ejemplo 
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\textwidth]{img/mutation_material.png}
+  \caption{Ejemplo del operador de mutacion enfocado a cambiar los compuestos asignados}
+  \label{figure:mutate_composite}
+\end{figure}
