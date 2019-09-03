@@ -639,7 +639,32 @@ entre si.
 Posterior a esto se realiza un calculo de la entropia de un individuo, el
 calculo de entropia es utilizado en la teoria de informacion para calcular el
 nivele de desorden o incertidumbre en los individuos, la formula que se utiliza
-para esto se muestra en 
+para esto se muestra en \ref{equation:entropy}
+
+\begin{equation}
+  s = -\sum_i P_i log P_i
+  \label{equation:entropy}
+\end{equation}
+
+La manera en como la entropia es utilizada en este proyecto es para determinar
+si un individuo se vuelve \textit{"aburrido"} o \textit{"interesante"} la manera
+en como se define este concepto para el individuo es mediante la medicion de las
+piezas semejantes en el mismo, deacuerdo a esto si la cantidad y tipos de
+compuestos se repiten demasiado en el individuo entonces el individuo tiene
+entropia baja o en otras palabras se vuelve \textit{"aburrido"} y
+\textit{monotono}.
+
+Una vez que se obtuvo el calculo de la entropia del individuo se procede a
+obtener la distancia \textit{Hamming} del mismo, de manera sencilla la
+\textit{distancia de hamming} (Hamming distance en ingles) representa el calculo
+realizado en dos cadenas de valores en donde el punto es encontrar el valor
+minimo de sustituciones necesarias para cambiar una cadena a otra
+
+
+\begin{equation}
+  d = min{ d(x, y) : x, y \epsilon C, si x \neq y, 1 sino 0}
+  \label{equation:hamming}
+\end{equation}
 
 %\[ x^n + y^n = z^n \]
 
