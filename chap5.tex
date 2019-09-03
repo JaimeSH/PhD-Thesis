@@ -412,7 +412,7 @@ un individuo:
 \end{enumerate}
 
 La manera en como se aplica el operador de mutacion se describe como sigue,
-primeo al momento de generar al nuevo individuo se realiza un calculo de
+primero al momento de generar al nuevo individuo se realiza un calculo de
 porcentaje en donde se decide si tendra o no mutacion dependiendo del procentaje
 de mutacion que se haya asignado al inicio del algoritmo, posteriormente en caso
 de que el valor de porcentaje quede dentro del rango se toma para las
@@ -447,12 +447,200 @@ hielo y finalmente \textit{2} representa el material de piedra, debido a que el
 juego solo acepta esta lista de compuestos no es posible asignar valores
 diferentes a estos.
 
-En la figura \ref{figure:mutate_composite} se muestra un ejemplo de la manera en
-como opera la mutacion del tipo de compuesto, en este ejemplo 
+En la figura \ref{figure:mutate_material} se muestra un ejemplo de la manera en
+como opera la mutacion del tipo de compuesto, en este ejemplo se muestra el
+genotipo y fenotipo de un individuo, el genotipo muestra los colores naranja,
+azul y gris para denotar los materiales de madera, hielo y piedra
+respectivamente, en este caso la mutacion cambia el material de 5 elementos del
+genotipo de madera a hielo, esto se refleja del lado derecho en donde se muestra
+la vista actualizada del individuo despues de la mutacion.
+
+Debido a que los compuestos generados pueden contener diferentes cantidades de
+elementos en estos casos se cambia el material equitativamente a todos elementos
+del compuesto, de esta manera se evita tener que realizar un recorrido por todo
+el compuesto y mutar el material de cada uno.
 
 \begin{figure}
   \centering
   \includegraphics[width=0.9\textwidth]{img/mutation_material.png}
-  \caption{Ejemplo del operador de mutacion enfocado a cambiar los compuestos asignados}
+  \caption{Ejemplo del operador de mutacion enfocado a cambiar el material de los compuestos, pre-mutacion (izquierda) y post-mutacion (derecha)}
+  \label{figure:mutate_material}
+\end{figure}
+
+La tercera mutacion se encarga de cambiar el compuesto que representa una
+posicion del genotipo del individuo, este trabaja de una manera similar al
+anterior en el sentido de que primero se selecciona a los individuos a mutar,
+posteriormente a la seleccion se realiza una segunda seleccion aleatoria entre
+las posiciones del genotipo del individuo, aquellos compuestos seleccionados son
+cambiados por otro de la lista existente, para esto se realiza una seleccion de
+un valor aleatorio que va desde \textit{0} hasta la cantidad de compuestos
+existentes, por ejemplo suponiendo que se tiene solo la cantidad base de piezas
+en el algoritmo entonces la seleccion sera un valor aleatorio desde \textit{0}
+hasta \textit{10}.
+
+La figura \ref{figure:mutate_composite} nos muestra un ejemplo de como es que
+actua la mutacion de tipo de compuesto, en el ejemplo mostrado se tiene el
+genotipo de un individuo combinado con su respectiva mascara asi como su
+fenotipo respectivo (lado izquierda) al ser representado en la pantalla del
+juego, en el lado derecho de la misma imagen se aprecia la modificacion de
+compuestos realizada al genotipo base (marcado en amarillo), la modificacion de
+compuestos en los individuos puede traer la conscuencia de que los niveles
+generados sean inestables como en este ejemplo, esto a su vez puede permitir
+identificar mascaras de los individuos que logran mantener la estabilidad de las
+estructuras permitiendo asi mejorar el algoritmo.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\textwidth]{img/mutation_composite.png}
+  \caption{Ejemplo del operador de mutacion enfocado a cambiar los compuestos asignados, pre-mutacion (izquierda) y post-mutacion (derecha)}
   \label{figure:mutate_composite}
 \end{figure}
+
+El ultimo tipo de mutacion realizada en los individuos es la modificacion de las
+posiciones \textit{x} y \textit{y} de algunos compuestos dentro del individuo,
+la modificacion de las posiciones se realiza mediante una seleccion de valores
+aleatorios de una distribucion gaussiana dentro de un cierto rango de distancia
+para no permitir que los elementos se alejen demasiado de punto central
+original.
+
+\subsection{Representacion de individuos}
+\label{section:individual_representation}
+
+Una vez que se han agregado nuevos individuos a la poblacion, y que estos
+individuos pasaron por su fase de mutacion si es que requerian se procede a
+realizar la combinacion de los elementos que conforman al individuo con el fin
+de generar los archivos requeridos para la simulacion de estos mismos, cabe
+resaltar que esta combinacion se realiza tambien en los individuos iniciales
+antes de la simulacion inicial, debido a que el juego requiere una
+representacion mediante el uso de archivos en formatos \textit{XML}, se requiere
+primero obtener la informacion de todos los elementos que conforman a un
+individuo y posteriormente armar los archivos mediante el uso de estos datos.
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\textwidth]{img/layer12_combine.png}
+  \caption{Ejemplo de la combinacion de capas de un individuo}
+  \label{figure:individual_representation}
+\end{figure}
+
+En la figura \ref{figure:individual_representation} muestra la estructura de los
+componentes de un individuo, un individuo es representado por \textit{2} capas
+diferentes en forma de lista, la primera es la capa de compuestos, esta capa se
+muestra la lista de compuestos que representan a un individuo, esta listas puede
+variar en tamaño dependiendo de si durante las operaciones de mutacion se le
+agregaron o quitaron elementos al individuo, de igual manera como se axplico en
+el la seccion \ref{section:composite_creation} cada valor de la lista representa
+no una pieza del juego sino uno de los compuestos que se crean antes de iniciar
+el algoritmo o aquellos que se agregan durante el mismo en caso de haber.
+
+La segunda parte que compone la representacion del individuo es la mascara, como
+se explica en la seccion \ref{subsection:ruleofthirds} la idea detras del uso de
+esta mascara es la de generar estructuras utilizando la lista de compuestos del
+individuo, en esta misma seccion se presento una propuesta de crear mascaras en
+donde se denotara la forma que se queria que tuviera un individuo particular,
+aplicando estas estructuras en los individuos generaba los resultados esperados,
+siendo el caso niveles en donde la distribucion de los compuestos crearan formas
+diferentes como castillos, torres, casas o diferentes figuras, sin embargo
+utilizar esta tipo de estructuras no permitia que el algoritmo lograra
+evolucionar sino que simplemente encontraria la mejor combinacion de
+piezas-mascara en determinado momento, por esto se opto por utilizar la
+generacion de mascaras que se muestra en la figura
+\ref{figure:individual_representation} y que fue explicado en la seccion
+\ref{section:ind_generation} la cual unicamente muestra una determinada cantidad
+de piezas a asignar en posiciones diferentes del nivel, esto permite tener mejor
+diversidad en los individuos creados.
+
+Al momento de combinar ambos componentes del individuo se obtiene un resultado
+similar al mostrado en la parte inferior de la imagen en donde los compuestos se
+organizan en manera de cola, es decir el primer elemento en la lista sera el
+primero en ser colocado, una vez que se definen cuales elementos seran colocados
+en cada columna el sistema calcula la altura total de cada compuesto y
+comenzando desde la parte inferior coloca un compuesto en el nivel, despues
+calcula la distancia desde la parte superior del mismo hasta la parte central
+del siguiente para colocarlo de tal forma que al comenzar la simulacion no
+aparescan en caida libre sino que aparescan una pieza sobre otra, de esta manera
+se previenen problemas de balance al permitir que que las piezas caigan y
+reboten en direcciones que provocaran que las estructuras terminen por caer
+totalmente, en la misma imagen se aprecian cuadros de diferentes colores, estos
+mismos representan el material del cual esta construido cada compuesto como se
+explico en la seccion de mutacion anterior.
+
+Finalmente una vez que se tiene la informacion anterior definida se procede a
+realizar una busqueda de los lugares en donde apareceran los enemigos del juego,
+la manera en como se define donde pueden aparecer estos es mediante una funcion
+que revisa los compuestos que existen en el nivel, caundo un compuesto cumple
+con ciertas caracteristicas se permite que uno de los enemigos pueda ser
+colocado en la parte central o superiror del mismo, al iniciar este metodo se
+busca aquellos que cumplen esta caracteristica y se ordenan en una lista
+auxiliar, despues de manera pseudo-aleatoria se decide la cantidad de enemigos
+que tendra el nivel, deacuerdo a este valor se seleccionan \textit{x} cantidad
+de posiciones para colocar a los enemigos donde \textit{x} es el valor de
+enemigos requeridos, una vez se definio en donde estaran colocados estos
+enemigos se regresa una lista con las coordenadas \textit{x} y \textit{y} de las
+mismas.
+
+Mediante la combinacion de los enemigos con el genotico construido de un
+individuo se obtiene el nivel a mostrar en el juego, una representacion de esto
+se muestra en la figura \ref{figure:ind_representation_plus_pigs} en donde al
+genotipo armado deacuerdo a los puntos anteriormente mencionados se le agrega el
+listado de posiciones de los enemigos, en este caso los enemigos son
+representados por un color verde en las posiciones en donde estaran, finalmente
+esto permite tener la estructura de los niveles completa, esta informacion se
+utiliza al momento de generar los archivos de \textit{XML} los cuales en el
+software de simulacion generaran una vista de los mismos como se muestra en la
+esquina inferior derecha de la misama imagen. 
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.9\textwidth]{img/layer123_combine.png}
+  \caption{Ejemplo de la combinacion de un genotipo armado de la figura \ref{figure:individual_representation} con la colocacion de enemigos}
+  \label{figure:ind_representation_plus_pigs}
+\end{figure}
+
+\subsection{Calculo de fitness}
+\label{subsection:fitness_calculation}
+
+Cuando los individuos pasan por el proceso de simulacion se genera un archivo en
+formato \textit{XML} que contiene los resultados de los compuestos que fueron
+puestos en los archivos antes de la simulacion con la diferencia de que estos
+archivos contienen la informacion del ultimo estado de los mismos compuestos al
+terminar dicha simulacion es decir se regra un listado de piezas y enemigos con
+la informacion de sus posiciones \textit{x} y \textit{y} asi como del angulo con
+en el cual quedaron al concluir la simulacion, ademas de esto se entrega la
+informacion de la velocidad promedio de movimiento que tuvieron.
+
+Esta informacion perimte conocer las inperfecciones que tuvieron los niveles al
+concluir las simulaciones, para una mejor evaluacion de la aptitud de los
+individuos se realiza una evaluacion que toma en cuenta los siguientes puntos:
+\begin{itemize}
+  \item La cantidad de piezas que no son destruidas durante la simulacion.
+  \item La diversidad de las piezas utilizadas en el individuo.
+  \item El resultado de la funcion de entropia con las piezas utilizadas.
+  \item La distancia \textit{Hamming} del mismo conjunto de piezas.
+\end{itemize}
+
+Primero para realizar la evaluacion de la primera parte del calculo de aptitud
+se toma el listado de piezas que se asigno al individuo antes de la simulacion,
+ademas de esto se toma el listado de las piezas que resultaron despues de la
+misma, posteriormente se realiza un calculo de procentaje de los valores de
+ambas listas en donde la lista inicial representa el \textit{100\%} de la
+aptitud del individuo, este calculo regresa un valor porcentual que se utiliza
+como la base para las evaluaciones subsequentes, mientras mas piezas se
+destruyan durante la simulacion el resultado de aptitud para el individuo sera
+menor.
+
+Despues de esto se realiza un calculo de los diferentes compuestos que integran
+a un individuo, para la evaluacion de esta parte se toma en cuenta la diversidad
+que logra tener el indiviudo, en donde el utilizar diferentes compuestos de la
+lista total permite tener una mejor calificacion, esto es debido que mientras
+mas compuestos sean utilizados los niveles que se pueden generar seran diversos
+entre si.
+
+Posterior a esto se realiza un calculo de la entropia de un individuo, el
+calculo de entropia es utilizado en la teoria de informacion para calcular el
+nivele de desorden o incertidumbre en los individuos, la formula que se utiliza
+para esto se muestra en 
+
+%\[ x^n + y^n = z^n \]
+
+%\[ s = -\sum_i P_i \log P_i]

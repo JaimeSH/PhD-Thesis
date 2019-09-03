@@ -34,6 +34,8 @@
 \BOOKMARK [2][-]{subsection.5.4.2}{Operador de seleccion}{section.5.4}% 34
 \BOOKMARK [2][-]{subsection.5.4.3}{Operador de cruce}{section.5.4}% 35
 \BOOKMARK [2][-]{subsection.5.4.4}{Operador de mutacion}{section.5.4}% 36
-\BOOKMARK [0][-]{appendix.A}{}{}% 37
-\BOOKMARK [1][-]{section.A.1}{Codigo del sitema}{appendix.A}% 38
-\BOOKMARK [2][-]{section*.26}{Codigo principal}{section.A.1}% 39
+\BOOKMARK [2][-]{subsection.5.4.5}{Representacion de individuos}{section.5.4}% 37
+\BOOKMARK [2][-]{subsection.5.4.6}{Calculo de fitness}{section.5.4}% 38
+\BOOKMARK [0][-]{appendix.A}{}{}% 39
+\BOOKMARK [1][-]{section.A.1}{Codigo del sitema}{appendix.A}% 40
+\BOOKMARK [2][-]{section*.29}{Codigo principal}{section.A.1}% 41
