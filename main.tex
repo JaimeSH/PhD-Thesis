@@ -141,6 +141,16 @@
 %  \renewcommand\
 %}
 
+% List of equations
+\usepackage{tocbibind}
+\usepackage{tocloft}
+\usepackage{xpatch}
+\newcommand{\listequationsname}{List of Equations}
+\newlistof{myequations}{equ}{\listequationsname}
+\newcommand{\myequations}[1]{%
+\addcontentsline{equ}{myequations}{\protect\numberline{\theequation}#1}\par}
+\xpretocmd{\listofmyequations}{\addcontentsline{toc}{chapter}{\listequationsname}}{}{}
+
 \def\all{all}
 % \ifx\files\all \typeout{Including all files.} \else \typeout{Including only \files.} \includeonly{\files} \fi
 
@@ -182,7 +192,7 @@ comment={#2},#1
 \include{chap3}
 \include{chap4}
 \include{chap5}
-%\include{chap6}
+\include{chap6}
 %\include{chap7}
 %\include{chap8}
 %\include{chap9}

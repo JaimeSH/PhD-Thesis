@@ -432,7 +432,7 @@ rojo) y una segunda para agregar nuevos compuestos (color verde).
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.8\textwidth]{img/mutation_add_remove.png}
+  \includegraphics[width=0.85\textwidth]{img/mutation_add_remove.png}
   \caption{Ejemplo del operador de mutacion enfocado a remover y agregar compuestos}
   \label{figure:mutate_add_remove}
 \end{figure}
@@ -462,7 +462,7 @@ el compuesto y mutar el material de cada uno.
 
 \begin{figure}
   \centering
-  \includegraphics[width=0.9\textwidth]{img/mutation_material.png}
+  \includegraphics[width=0.95\textwidth]{img/mutation_material.png}
   \caption{Ejemplo del operador de mutacion enfocado a cambiar el material de los compuestos, pre-mutacion (izquierda) y post-mutacion (derecha)}
   \label{figure:mutate_material}
 \end{figure}
@@ -642,9 +642,10 @@ nivele de desorden o incertidumbre en los individuos, la formula que se utiliza
 para esto se muestra en \ref{equation:entropy}
 
 \begin{equation}
-  s = -\sum_i P_i log P_i
+  s = -\sum _{i} P_i log P_i
   \label{equation:entropy}
 \end{equation}
+\myequations{Ecuacion de entropia}
 
 La manera en como la entropia es utilizada en este proyecto es para determinar
 si un individuo se vuelve \textit{"aburrido"} o \textit{"interesante"} la manera
@@ -654,18 +655,78 @@ compuestos se repiten demasiado en el individuo entonces el individuo tiene
 entropia baja o en otras palabras se vuelve \textit{"aburrido"} y
 \textit{monotono}.
 
+\begin{equation}
+d = min \begin{Bmatrix} $ d(x, $ y)$ : $ x, $ y $ \epsilon $ C, si $ x \neq y $ entonces 1 $ sino $ 0 $ \end{Bmatrix}
+\label{equation:hamming}
+\end{equation}
+\myequations{Ecuacion de la distancia Hamming}
+
 Una vez que se obtuvo el calculo de la entropia del individuo se procede a
 obtener la distancia \textit{Hamming} del mismo, de manera sencilla la
 \textit{distancia de hamming} (Hamming distance en ingles) representa el calculo
 realizado en dos cadenas de valores en donde el punto es encontrar el valor
-minimo de sustituciones necesarias para cambiar una cadena a otra
-
+minimo de sustituciones necesarias para cambiar una cadena a otra, visto de otra
+manera, la \textit{distancia de hamming} se encarga de encontrar la distancia
+mas corta entre dos cadenas, la manera en como funciona esta funcion se muestra
+en la formula \ref{equation:hamming}, en esta misma ecuacion los objetos
+\textit{x} y \textit{y} representan listas, en este caso se manejan listas de
+valores boleanos es decir listas de valores \textit{0} y \textit{1}, una
+explicacion mas simple se presenta en la funcion \ref{equation:hammin_example}.
 
 \begin{equation}
-  d = min{ d(x, y) : x, y \epsilon C, si x \neq y, 1 sino 0}
-  \label{equation:hamming}
+  \begin{split}
+    C = & \begin{Bmatrix} a, b, c \end{Bmatrix} \\
+     & a = (00000) \\
+     & b = (10110) \\
+     & c = (01011) \\
+     d(a, b) & = 3 \qquad d(a, c) = 3 \qquad d(b, c) = 4
+  \end{split}
+  \label{equation:hammin_example}
 \end{equation}
+\myequations{Ejemplo de uso de la distancia de Hamming}
 
-%\[ x^n + y^n = z^n \]
+En esta funcion se tiene un conjunto de listas representado por \textit{C}, en
+este conjunto existen las listas \textit{a, b y c}, para poder encontrar la
+\textit{distancia de hamming} de cada par de listas se utiliza la formula
+\ref{equation:hamming} esto es, se revisa cada par de elementos de la listas y
+se suma \textit{1} si los elementos son diferentes, de esta manera se logra
+determinar que la cantidad de cambios necesarios para hacer que la lista
+\textit{b} se asemeje completamente a la lista \textit{a} es \textit{3} debido a
+que solo se requiere cambiar los tres valores \textit{1} en la lista \textit{b},
+la razon por la que no es requerido cambiar valores en la lista \textit{a} es
+debido a que en la funcion la segunda lista utilizada es la que se quiere
+asemejar a la primera no solamente cambiar una lista a otra.
 
-%\[ s = -\sum_i P_i \log P_i]
+\subsection{Seleccion de miembros elite}
+\label{subsection:elite_selection}
+
+Finalmente despues de obtener los resultados de aptitud de los individuos se
+procede a realizar la seleccion de aquellos que lograran integrar el grupo de
+elite que se utilizara para sustituir miembros de la poblacion al inicio de la
+siguiente generacion, para realizar esto primero se requiere ordenar todos los
+individuos por medio de su respectivo valor de fitness desde el valor mas alto
+hasta el valor mas bajo, posteriormente se toma una determinada cantidad de
+individuos iniciando desde el mejor, la cantidad de individuos que se tomaran
+para el grupo de elite es una cantidad que se define antes de iniciar el
+algoritmo genetico.
+
+Una vez que se ah tomado la cantidad de individuos requerida se procede a
+integrar estos mismos individuos a el grupo de elite, para realizar la
+integracion al grupo de elite primero se requiere analizar el estado del grupo,
+en caso de que no existan elementos en la lista lo cual solo sucede en la
+primera generacion, el grupo seleccionado se integra automaticamente a la lista
+de elite, despues se ordena la lista deacuerdo al valor de aptitud y se corta de
+tal manera que la lognitud de la lista de elite sea menor o igual a un valor que
+se determina antes de iniciar el algoritmo, en caso de que ya existan elementos
+en el grupo entonces estos miembros se integran al final de la lista del grupo
+elite, se realiza un reordenamiento en la lista en base al valor de aptitud de
+los individuos y se corta la lista en caso se ser requerido.
+
+Una vez que se han completado todos los procesos anteriormente explicados el
+algoritmo agrega datos de los mejores, los perores y el promedio de los valores
+de aptitud de los individuos en listas que sirven para realizar promedios al
+final de toda la ejecucion del codigo, ademas de esto tambien se guarda
+informacion de los resultados individuales de las funciones de \textit{entropia}
+y la \textit{distancia de hamming} con el fin de ver en manera de graficas el
+comportamiento del algoritmo bajo los datos que le fueron proveidos al inicio de
+la ejecucion.
